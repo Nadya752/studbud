@@ -1,0 +1,23 @@
+{
+  "name": "studbud",
+  "version": "1.0.0",
+  "description": "DECO2017 A3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nadya752/studbud.git"
+  },
+  "author": "Nadya Felissa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nadya752/studbud/issues"
+  },
+  "homepage": "https://github.com/Nadya752/studbud#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
