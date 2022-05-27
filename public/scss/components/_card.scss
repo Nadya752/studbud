@@ -1,0 +1,148 @@
+
+.unchecked-card{
+    display: flex;
+    border: $base-border-thickness solid $light-stroke;
+    border-radius: $base-border-radius;
+    padding: $base-padding*1.5 0 $base-padding*1.5 0;
+    
+    cursor: pointer;
+    
+    .checkbox-container {
+        display: flex;
+        cursor: pointer;
+        padding: 0 $base-padding*2 0 $base-padding*2;
+
+        input[type=checkbox] {
+            position: absolute;
+            //appearance: none;
+            opacity: 0;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark{
+            // display: inline-block;
+            display:flex;
+            height: 26px;
+            width: 26px;
+            background-color: $white;
+            border: $base-border-thickness*1.5 solid $ternary;
+            border-radius: 50%;
+
+        }
+
+        .checkmark:hover{
+            background-color: $hover;
+        }
+
+        input[type=checkbox]:checked ~ .checkmark {
+            // background-color: blue;
+            .check{
+                width: 5px;
+                height: 12px;
+                border: solid $primary;
+                border-width: 0 2.5px 2.5px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+        }
+
+    }
+
+}
+.unchecked-card:hover {
+    background-color: $hover;
+}
+
+
+.card-title{
+    display: block;
+    padding: 0;
+    margin: 0 0 $base-margin*0.5 0;
+    //background-color: aquamarine;
+    font-size: $font-size-l;
+    font-weight: $medium;
+    color: $primary;
+
+    @include mobile{
+        font-size: $base-font-size;
+    }
+
+}
+
+.card-detail{
+    display: flex;
+    font-size: $font-size-xs;
+    //background-color: $yellow;
+    color: $secondary;
+
+    .col-tag{
+        display:inline-block;
+        margin: 0 $base-margin*0.5 0 0;
+        width: .5rem;
+        height: .5rem;
+        background:$purple;
+        border-radius:  50%;
+        align-self: center;
+
+
+        // @include mobile{
+        //     width: .5rem;
+        //     height: .5rem;
+        // }
+
+    }
+    // @include mobile{
+    //     font-size: $font-size-xs;
+    // }
+}
+
+.kb-card{
+    //background-color: aqua;
+    border: $base-border-thickness solid $light-stroke;
+    border-radius: $base-border-radius;
+    padding:$base-padding*1.5;
+    margin-bottom: $base-margin;
+
+    .kb-card-title{
+        @extend .card-title;
+        font-size:$base-font-size;
+        
+    }
+
+    .mid-card-detail{
+        @extend .card-detail;
+        margin: 0 0 $base-margin*0.5 0;
+        display: flex;
+        
+
+    }
+
+}
+
+.kb-card:hover{
+    background-color: $hover;
+    cursor:pointer;
+}
+
+.priority{
+    background-color: $p-high;
+    padding:$base-padding*0.15 $base-padding*0.5;
+    border-radius: $base-border-radius*0.5;
+}
+
+.seperator{
+    
+    display: inline-block;
+    margin: $base-margin*0.25 $base-margin*0.25;
+    width: 4px;
+    height: 4px;
+    background:$ternary;
+    border-radius:  50%;
+
+    
+    
+
+
+}

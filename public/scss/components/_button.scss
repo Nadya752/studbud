@@ -1,0 +1,179 @@
+
+.button{
+  display: flex;
+  cursor: pointer;
+  p{
+    display: flex;
+    background-color: $light-fill;
+    margin: 0;
+    padding: $base-padding*0.75 $base-padding;
+    border-radius: $base-border-radius;
+    border: $base-border-thickness solid $light-stroke;
+    line-height: $font-size-s;
+    font-size: $font-size-s;
+    font-weight: $regular;
+    color: $primary;
+    
+    @include mobile{
+      font-size: $font-size-xs;
+    }
+
+    // display: flex;
+  }
+
+  .btn-icon{
+    font-size: $font-size-s;
+    margin-right: $base-margin*0.5;
+    align-self: center;
+
+    @include mobile{
+      font-size: $font-size-xs;
+    }
+  }
+
+  
+
+}
+
+.btn-add{
+  display: block;
+  margin-bottom: $base-margin;
+  cursor: pointer;
+
+   p{
+    display: flex;
+    margin: 0;
+    padding: $base-padding*0.75 $base-padding;
+    border-radius: $base-border-radius;
+    border: $base-border-thickness solid $light-stroke;
+    line-height: $font-size-s;
+    font-size: $font-size-s;
+    font-weight: $regular;
+    background-color: $white;
+    color: $secondary;
+   }
+   .btn-icon{
+    font-size: $font-size-s;
+    margin-right: $base-margin*0.5;
+    align-self: center;
+
+  }
+
+}
+.btn-add:hover {
+  p{
+    background-color: $hover;
+  }
+
+}
+
+.icon{
+  color: $icon-col;
+  font-size: $font-size-l;
+  padding:$base-padding*0.75;
+  border-radius: $base-border-radius*0.5;
+
+}
+
+.icon:hover{
+  background-color: $hover;
+  cursor: pointer
+}
+
+.kb-btn-add{
+  @extend .btn-add;
+  height:fit-content;
+  width: $col-width;
+}
+
+//MODAL
+.btn-close{
+  background-color: $light-fill;
+  padding: $base-padding*0.75;
+  font-size: $font-size-xl;
+  font-weight: $light;
+  border-radius: 50%;
+  color: $secondary;
+  position:absolute;
+  top:0;
+  right: 0;
+  margin: $base-margin;
+
+}
+
+.btn-close:hover{
+  cursor: pointer;
+  color: $primary;
+  background-color: $hover;
+}
+
+.btn-modal{
+  padding: 0;
+  height: fit-content;
+
+  p{
+    margin: 0;
+    padding: $base-padding $base-padding*2;
+    line-height: $font-size-s;
+    font-size: $font-size-s;
+    font-weight: $regular;
+  }
+}
+
+.action{
+  background-color: $primary;
+  color: $light-fill;
+  border: $base-border-thickness solid $primary;
+  border-radius: $base-border-radius;
+}
+
+.btn-modal:hover{
+  cursor: pointer;
+}
+
+.cancel{
+  background-color: $light-fill;
+  color: $primary;
+  border: $base-border-thickness solid $light-fill;
+  border-radius: $base-border-radius;
+
+}
+
+
+
+
+.timer-button{
+  @extend .button;
+  p{
+    font-size: $font-size-l;
+    font-weight: $medium;
+    padding: $base-padding*1.25 $base-padding*3 $base-padding*1.25 $base-padding*3;
+    margin: 0 $base-margin $base-margin $base-margin;
+    @include mobile{
+      font-size: $font-size-s;
+    }
+  }
+
+}
+
+
+.reading-btn{
+  padding: $base-padding;
+  background-color: $light-grey;
+  border: $base-border-thickness solid $ternary;
+  border-radius: $base-border-radius;
+
+  p{
+    font-size: $font-size-s;
+    font-weight: $regular;
+    color: $primary;
+
+  }
+
+}
+
+.reading-btn:hover{
+  cursor:pointer;
+  background-color: $hover;
+  border: $base-border-thickness solid $secondary;
+}

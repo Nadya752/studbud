@@ -4,9 +4,477 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="scss/index.scss">
+    <title>StudBud</title>
 </head>
 <body>
-    <h1>STUDBUD</h1>
+
+    <section class="screen">
+        <nav class="top-nav-mobile">
+            <div class="nav-wrapper justify-space-between align-center">
+                <span class="material-symbols-outlined hamburger-menu">menu</span>
+                <div class="mobile-dropdown-select">
+                    <p>✔️ Task List</p>
+                    <span class="material-symbols-outlined expand-icon">expand_more</span>
+                </div>
+                <div class="mobile-dropdown-list">
+                    <p>🗂️ Kanban Board</p>
+                </div>
+                <h1 class="music-icon-mobile">🎵</h1>
+            </div>
+        </nav>
+
+        <nav class="left-nav-mobile">
+            <div class="nav-menu-wrapper">
+                <span class="material-symbols-outlined hamburger-menu">menu</span>
+                <input type="radio" class="nav-tab-radio" name="nvm" id="task" checked>
+                <label for="task" class="nav-tab-label">✔️<span class="menu-name">To-dos</span></label>
+                <input type="radio" class="nav-tab-radio" name="nvm" id="timer">
+                <label for="timer" class="nav-tab-label">⏰<span class="menu-name">Timer</span></label>
+                <input type="radio" class="nav-tab-radio" name="nvm" id="reading">
+                <label for="reading" class="nav-tab-label">📖<span class="menu-name">Readings</span></label>
+            </div>
+        </nav>
+        <!-- <div class="music-player justify-space-between">
+            <iframe class="player" src="https://open.spotify.com/embed/album/5r36AJ6VOJtp00oxSkBZ5h?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            <span class="material-symbols-outlined dbl-arrow-icon">keyboard_double_arrow_down</span>
+        </div> -->
+        <div class="music-player justify-center align-center minimised">
+            <h1 class="music-icon">🎵</h1>
+            <span class="material-symbols-outlined dbl-arrow-icon" id="dbl-up">keyboard_double_arrow_up</span>
+        </div>
+
+        <nav class="navbar align-center">
+            <ul class="navicons container ">
+                <li class="navicon">✔️</li>
+                <li class="navicon nav-selected">⏰</li>
+                <li class="navicon">📖</li>
+            </ul>
+        </nav>
+
+
+<!-- TASK - KANBAN -->
+        <section class="navcontent" id="task-kanban-tab">
+
+            <div class="tab">
+                <input type="radio" class="tab-radio" name="todo" id="tasklist" checked>
+                <label for="tasklist" class="tab-label">✔️ Task List</label>
+                <input type="radio" class="tab-radio" name="todo" id="kanban">
+                <label for="kanban" class="tab-label">🗂️ Kanban Board</label>
+            </div>
+
+<!-- ____TASK LIST_____ -->
+            <div class="tab-content align-center" id="tl-content">
+                <div class="tasks col-10-desktop col-10-mobile">
+                    <div class="title-len justify-start align-center">
+                        <p class="task-title">Upcoming tasks</p>
+                        <div class="list-len"><p>1</p></div>
+                    </div>
+                    <div class="btn-add">
+                        <p><span class="material-symbols-outlined btn-icon">add</span>Add task</p>
+                    </div>
+
+                    <div class="unchecked-card">
+                        <label for="task-1" class="checkbox-container justify-center align-center">
+                            <input type="checkbox" id="task-1"/>
+                            <span class="checkmark justify-center align-center"><span class="check"></span></span>
+                        </label>
+                        <div class="card-content">
+                            <p class="card-title">ICPU 1500 word Self-Reflection</p>
+                            <p class="card-detail"><span class="col-tag"></span>by Tues, 11 Apr 2022</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tasks col-10-desktop col-10-mobile">
+                    <div class="task-title-wrapper justify-space-between">
+                        <div class="title-len justify-start align-center" id="completed">
+                            <p class="task-title" >Completed</p>
+                            <div class="list-len"><p>1</p></div>
+                        </div>
+                        <div class="button justify-center align-center">
+                            <p><span class="material-symbols-outlined btn-icon">visibility_off</span>Hide</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- ____KANBAN BOARD_____ -->
+            <div class="tab-content" id="kb-content">
+
+                <div class="columns">
+
+                    <div class="column">
+                        <div class="col-top justify-space-between align-center">
+                            <p>New Tasks</p>
+                            <span class="material-symbols-outlined icon">edit</span>
+                        </div>
+                        <div class="kb-card">
+                            <p class="kb-card-title">ICPU 1500 word Self-Reflection</p>
+                            <p class="mid-card-detail align-center"><span class="priority">High</span><span class="seperator"></span>3h</p>
+                            <p class="card-detail"><span class="col-tag"></span>by Tues, 11 Apr 2022</p>
+                        </div>
+                        <div class="kb-btn-add">
+                            <p><span class="material-symbols-outlined btn-icon">add</span>Add Task</p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="col-top justify-space-between align-center">
+                            <p>In Progress</p>
+                            <div class="col-icon-wrapper">
+                                <span class="material-symbols-outlined icon">edit</span>
+                                <span class="material-symbols-outlined icon">delete</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="col-top justify-space-between align-center">
+                            <p>In Progress</p>
+                            <div class="col-icon-wrapper">
+                                <span class="material-symbols-outlined icon">edit</span>
+                                <span class="material-symbols-outlined icon">delete</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="col-top justify-space-between align-center">
+                            <p>In Progress</p>
+                            <div class="col-icon-wrapper">
+                                <span class="material-symbols-outlined icon">edit</span>
+                                <span class="material-symbols-outlined icon">delete</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column kb-btn-add">
+                        <p><span class="material-symbols-outlined btn-icon">add</span>Add Section</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- ____NEW TASK MODAL_____ -->
+    <section class="modal-screen" id ="new-task-modal">
+
+        <div class="modal justify-space-between align-end">
+            <span class="material-symbols-outlined btn-close">close</span>
+            <!-- <div class="modal-title justify-space-between align-center">
+                <p>Create New Task</p>
+            </div> -->
+
+            <div class="modal-content">
+                <p class="modal-title">Create New Task</p>
+
+                <form action = "#" >
+                    <input class="form-wrapper"type="text" placeholder="Untitled" required>
+                    
+                    <div class="form-wrapper form-col">
+                        <p class="form-text">Colour</p>
+                            <label for="purple-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="coltag" id="purple-tag"/>
+                                <span class="coltag justify-center align-center purple" ><span class="check"></span></span>
+                            </label>
+
+                            <label for="blue-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="coltag" id="blue-tag"/>
+                                <span class="coltag justify-center align-center blue"><span class="check"></span></span>
+                            </label>
+
+                            <label for="green-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="coltag" id="green-tag"/>
+                                <span class="coltag justify-center align-center green"><span class="check"></span></span>
+                            </label>
+
+                            <label for="yellow-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="coltag" id="yellow-tag"/>
+                                <span class="coltag justify-center align-center yellow"><span class="check"></span></span>
+                            </label>
+
+                            <label for="orange-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="coltag" id="orange-tag"/>
+                                <span class="coltag justify-center align-center orange"><span class="check"></span></span>
+                            </label>
+
+                            <label for="red-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="coltag" id="red-tag"/>
+                                <span class="coltag justify-center align-center red"><span class="check"></span></span>
+                            </label>
+                    </div>
+
+                    <div class="form-wrapper">
+                        <p class="form-text-vertical">Due date</p>
+                        <input type="date">
+                    </div>
+                    <div class="form-wrapper">
+                        <p class="form-text-vertical">Priority</p>
+                        <div class="select-wrapper">
+                            <select>
+                                <option value="">High</option>
+                                <option value="">Medium</option>
+                                <option value="">Low</option>
+                            </select>
+                            <span class="material-symbols-outlined arrow">expand_more</span>
+                        </div>
+                    </div>
+
+                    <div class="form-wrapper">
+                        <p class="form-info-text">Estimated Completion Time</p>
+                        <div class="stepper-wrapper">
+                            <div class="time-wrapper">
+                                <p class="form-text-vertical">Hour</p>
+                                <div class="input-wrapper">
+                                    <input type="number" name="est-time"  min="0" step="1" value="0">
+                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                </div>
+                            </div>
+                            <div class="time-wrapper">
+                                <p class="form-text-vertical">Minutes</p>
+                                <div class="input-wrapper">
+                                    <input type="number" name="est-time"  min="0" max="60" step="1" value="0">
+                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-wrapper form-tgl align-center">
+                        <span class="material-symbols-outlined tgl-icon">done</span>
+                        <p class="form-text-tgl">Mark as done</p>
+
+                        <label for="task-done" class="tgl-container">
+                            <input type="checkbox" name="tgl-done" id="task-done"/>
+                            <span class="tgl align-center"><span class="tgl-circle"></span></span>
+                        </label>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-modal cancel">
+                    <p>Cancel</p>
+                </div>
+                <div class="btn-modal action">
+                    <p>Create task</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+<!-- MODAL EDIT READING -->
+<section class="modal-screen">
+    <div class="modal justify-start align-start">
+        <span class="material-symbols-outlined btn-close">close</span>
+
+        <div class="modal-content">
+            <div class="modal-action-btn-wrapper">
+                <div class="modal-action-btn justify-center align-center">
+                    <span class="material-symbols-outlined icon">edit</span>
+                    <p class="modal-btn-text">Edit reading</p>
+                </div>
+                <div class="modal-action-btn justify-center align-center">
+                    <span class="material-symbols-outlined icon">delete</span>
+                    <p class="modal-btn-text">Delete reading</p>
+                </div>
+            </div>
+            <h1 class="reading-title">Introduction to interdisplinary research: theory and practice</h1>
+            <div class="details-wrapper justify-start">
+                <div class="lhs">
+                    <div class="lhs-item">
+                        <span class="material-symbols-outlined detail-icon">library_books</span>
+                        <p class="property-text">Collection</p>
+                    </div>
+                    <div class="lhs-item">
+                        <span class="material-symbols-outlined detail-icon">link</span>
+                        <p class="property-text">Link</p>
+                    </div>
+                    <div class="lhs-item">
+                        <span class="material-symbols-outlined detail-icon">show_chart</span>
+                        <p class="property-text">Status</p>
+                    </div>
+                </div>
+                <div class="rhs">
+                    <div class="card-detail task-detail">
+                        <span class="col-tag"></span>
+                        <p>ARCH4109</p>
+                    </div>
+
+                    <div class="task-detail">
+                        <a class="reading-link" href="https://www.notion.so/" target="_blank">https://www.notion.so/</a>
+                    </div>
+
+                    <div class="task-detail align-center">
+                        <div class="rhs-item">
+                            <span class="material-symbols-outlined detail-icon">done_all</span>
+                            <p>Read</p>
+                        </div>
+                        <!-- <span><span class="material-symbols-outlined detail-icon">done_all</span>Read</span> -->
+                        <span class="seperator"></span>
+                        <!-- <span><span class="material-symbols-outlined detail-icon">bookmark</span>Bookmarked</span> -->
+                        <div class="rhs-item">
+                            <span class="material-symbols-outlined detail-icon">bookmark</span>
+                            <p>Bookmarked</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </section>
+<!-- POMODORO - STOPWATCH -->
+    <section class="navcontent" id="pomodoro-stopwatch-tab">
+        <div class="tab">
+            <input type="radio" class="tab-radio" name="timer" id="pomodoro" checked>
+            <label for="pomodoro" class="tab-label">⏰ Pomodoro Timer</label>
+            <input type="radio" class="tab-radio" name="timer" id="stopwatch">
+            <label for="stopwatch" class="tab-label">⏱️ Classic Stopwatch</label>
+        </div>
+<!-- STOPWATCH -->
+        <div class="tab-content align-center" id="swatch-content">
+            <div class="stopwatch-container">
+                <h1 class="stopwatch">00:00.00</h1>
+                <div class="timer-btn-container justify-center">
+                    <div class="timer-button"><p>Reset</p></div>
+                    <div class="timer-button"><p>Pause</p></div>
+                </div>
+            </div>
+
+
+        </div>
+<!-- POMODORO -->
+        <div class="tab-content align-center" id="pmdr-content">
+            <div class="settings button justify-center">
+                <p><span class="material-symbols-outlined btn-icon">settings</span>Settings</p>
+            </div>
+
+            <div class="pmdr-tab">
+                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="focus" checked>
+                <label for="focus" class="pmdr-tab-label" id="focus-label">Focus</label>
+                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="shortbr">
+                <label for="shortbr" class="pmdr-tab-label"id="shortbr-label">Short Break</label>
+                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="longbr">
+                <label for="longbr" class="pmdr-tab-label"id="longbr-label">Long Break</label>
+            </div>
+            <div class="counter-container ">
+                <div class="progress-circle">
+                    <div class="progress-circle-inner">
+                        <div class="text-container">
+                            <p class ="circle-text">Round 1 of 4</p>
+                            <h1 class="circle-text">25:00</h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- <div class="timer-button"><p>Start</p></div> -->
+
+            <div class="timer-btn-container justify-center">
+                <div class="timer-button"><p>Skip to Short Break</p></div>
+                <div class="timer-button"><p>Pause</p></div>
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- READING - COLLECTION -->
+<section class="navcontent" id="readingls-collections-tab">
+    <div class="tab">
+        <input type="radio" class="tab-radio" name="readings" id="readingls" checked>
+        <label for="readings" class="tab-label">📖 Readings</label>
+        <input type="radio" class="tab-radio" name="readings" id="collections">
+        <label for="readings" class="tab-label">📚 Collections</label>
+    </div>
+    <div class="tab-content align-center" id="collections-content">
+        <div class="accordion col-10-desktop col-10-mobile">
+            <div class="btn-add">
+                <p><span class="material-symbols-outlined btn-icon">add</span>Add collection</p>
+            </div>
+
+            <div class="accordion-item">
+
+
+                <div class="label-wrapper justify-space-between align-center">
+                    <div class="label justify-start align-center">
+                        <span class="material-symbols-outlined expand-icon">expand_more</span>
+                        <p>ARCH4109</p>
+                        <div class="label-icon-wrapper">
+                            <span class="material-symbols-outlined icon label-icon">edit</span>
+                            <span class="material-symbols-outlined icon label-icon">delete</span>
+                        </div>                    
+                    </div>
+                    <div class="open-all">
+                        <p class="justify-center align-center"><span class="material-symbols-outlined open-all-icon">open_in_new</span><span class ="open-all-text">Open all readings</span></p>
+                    </div>
+                </div>
+
+
+                <div class="content show">
+                    <div class="reading-btn">
+                        <p>Introduction to interdisciplinary research: theory and practice</p>
+                    </div>
+                    <div class="reading-btn">
+                        <p>Introduction to interdisciplinary research: theory and practice</p>
+                    </div>
+                    <div class="reading-btn">
+                        <p>Introduction to interdisciplinary research: theory and practice</p>
+                    </div>
+                    <!-- <a class="reading-btn" href="https://www.notion.so/" target="_blank">Introduction to interdisciplinary research: theory and practice </a> -->
+                </div>
+
+                
+            </div>
+
+            <div class="accordion-item">
+
+
+                <div class="label-wrapper justify-space-between align-center">
+                    <div class="label justify-start align-center">
+                        <span class="material-symbols-outlined expand-icon">expand_more</span>
+                        <p>ARCH4109</p>
+                        <div class="label-icon-wrapper">
+                            <span class="material-symbols-outlined icon label-icon">edit</span>
+                            <span class="material-symbols-outlined icon label-icon">delete</span>
+                        </div>                    
+                    </div>
+                    <div class="open-all">
+                        <p class="justify-center align-center"><span class="material-symbols-outlined open-all-icon">open_in_new</span><span class ="open-all-text">Open all readings</span></p>
+                    </div>
+                </div>
+
+
+                <div class="content show">
+                    <div class="reading-btn">
+                        <p>Introduction to interdisciplinary research: theory and practice</p>
+                    </div>
+                    <div class="reading-btn">
+                        <p>Introduction to interdisciplinary research: theory and practice</p>
+                    </div>
+                    <div class="reading-btn">
+                        <p>Introduction to interdisciplinary research: theory and practice</p>
+                    </div>
+                    <!-- <a class="reading-btn" href="https://www.notion.so/" target="_blank">Introduction to interdisciplinary research: theory and practice </a> -->
+                </div>
+        </div>
+
+
+    </div>
+</section>
+
+<!-- <button onclick="open()">Geeksforgeeks</button>
+  
+<script>
+    function open() {
+        window.open("https://www.google.com", "_blank");
+    }
+</script> -->
+
 </body>
 </html>

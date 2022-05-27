@@ -1,0 +1,718 @@
+@use "sass:math";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*,
+*:before,
+*:after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+@import 'variables';
+@import 'breakpoints';
+@import 'grid';
+@import 'components/button';
+@import 'components/card';
+@import 'components/modal';
+@import 'components/form';
+
+
+
+
+// #tl-content{
+//   display: none;
+// }
+
+
+// #task-kanban-tab{
+//   display: none;
+// }
+
+
+#pomodoro-stopwatch-tab{
+  display: none;
+}
+
+#readingls-collections-tab{
+  display: none;
+}
+
+// .modal-screen{
+//   display: none;
+// }
+
+#new-task-modal{
+  display:none;
+}
+
+.screen {
+  display: flex;
+  height: 100vh;
+
+  .music-player{
+    position: fixed;
+    display: flex;
+    gap: $base-margin;
+    border-top-left-radius: $base-border-radius;
+    border-top-right-radius: $base-border-radius;
+    left: 50%;
+    bottom: 0;
+    width: 95%;
+    transform: translateX(-50%);
+    z-index: 1;
+    background-color: $light-fill;
+    border: $base-border-thickness solid $light-stroke;
+  
+    .player{
+      border-top-left-radius: $base-border-radius;
+      // border-top-right-radius: $base-border-radius;
+
+
+    }
+    .dbl-arrow-icon{
+      color: $secondary;
+      padding: $base-padding*0.5 $base-padding $base-padding $base-padding;
+
+    }
+    .dbl-arrow-icon:hover {
+      color:$primary;
+      cursor: pointer;
+    }
+
+    .music-icon{
+      padding:0 0 0 $base-padding;
+    }
+
+    #dbl-up{
+      padding-left: 0;
+    }
+    
+    @include mobile{
+      display: none;
+    }
+  
+  }
+
+  .minimised{
+    width:fit-content;
+  }
+
+  .left-nav-mobile{
+    position: fixed;
+    background-color: rgba(131, 131, 131, 0.5);
+    display: flex;
+    height: 100vh;
+    width: 100%;
+
+
+
+
+
+    .nav-menu-wrapper{
+      position:relative;
+      display: flex;
+      flex-direction: column;
+      font-size: $font-size-l;
+      padding-top: 5rem;
+      width: 50%;
+      background-color: $light-fill;
+      border-right: $base-border-thickness solid $light-stroke;
+      color: $primary;
+
+      
+      .hamburger-menu{
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: $font-size-xl;
+        padding: $base-padding;
+      }
+      .nav-tab-label{
+        padding:$base-padding*1.5 $base-padding $base-padding*1.5 $base-padding*3;
+        cursor: pointer;
+
+
+        .menu-name{
+          margin-left: $base-margin;
+          font-size: $base-font-size;
+          font-weight: $medium;
+        }
+
+
+      }
+  
+      .nav-tab-radio{
+        display: none;
+      }
+  
+      .nav-tab-radio:checked + .nav-tab-label {
+        background-color: $light-stroke;
+      }
+    }
+
+    display: none;
+  }
+
+  .top-nav-mobile{
+    position: fixed;
+    z-index: 1;
+    //background-color: blue;
+    height: $nav-height-mobile;
+    width: 100%;
+    display: flex;
+    padding: $base-padding;
+    background-color: $light-fill;
+    border-bottom: $base-border-thickness solid $light-stroke;
+
+    .nav-wrapper{
+      flex: 1;
+      display: flex;
+      //position: relative;
+      height: 100%;
+      
+      .hamburger-menu{
+        //position: absolute;
+        //left: 0;
+        color: $primary;
+        font-size: $font-size-xl;
+      }
+
+      .music-icon-mobile{
+        // position: absolute;
+        // top: 0;
+        // right: 0;
+        color: $primary;
+        font-size: $font-size-l;
+        //background-color: $icon-col; //IF CLICKED!!!!
+        padding: $base-padding*0.5 $base-padding*0.75 ;
+        //border: $base-border-thickness solid $light-stroke;
+        border-radius: $base-border-radius;
+        // padding: $base-padding;
+      }
+
+      .mobile-dropdown-select{
+        color: $primary;
+        display: flex;
+        gap: $base-margin*0.5;
+        font-size: $base-font-size;
+        position: relative;
+        padding:$base-padding;
+
+// !!!!!!!!!! DO NOT DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //background-color:$white;
+        //border-right: $base-border-thickness solid $light-stroke;
+        //border-left: $base-border-thickness solid $light-stroke;
+
+        .expand-icon{
+          font-size: $font-size-l*1.25;
+        }
+
+        p{
+          align-self:center;
+        }
+
+
+      }
+
+      .mobile-dropdown-list{
+// !!!!!!!!!! DO NOT DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // top: 190%;
+        // position: absolute;
+        // color: $primary;
+        // font-size: $base-font-size;
+        // background-color: $light-fill;
+        // border: $base-border-thickness solid $light-stroke;
+      
+        // p{
+        //   padding: $base-padding*1.25 $base-padding $base-padding*1.25 $base-padding;
+        //   text-align: center;
+        // }
+
+        display: none;
+
+      }
+
+    }
+
+
+    @include desktop{
+      display: none;
+    }
+  }
+
+  .navbar {
+    display: flex;
+    height: 100vh;
+    position: fixed;
+    background-color: $light-fill;
+    border-right: $base-border-thickness solid $light-stroke;
+    width: $nav-width;
+
+    .navicons{
+      list-style: none;
+    }
+
+    .navicon{
+      cursor: pointer;
+      background-color: $light-fill;
+      padding: $base-padding;
+      border-radius: $base-border-radius;
+      width: fit-content;
+      font-size: $base-font-size * 1.5;
+      line-height: 1em;
+      margin: $base-margin;
+
+    }
+
+
+    .nav-selected{
+      background-color: $light-stroke;
+    }
+
+    @include mobile{
+      display: none;
+    }
+
+  }
+
+  .navcontent{
+    margin-left: $nav-width;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include mobile{
+      margin-left: 0;
+      margin-top: $nav-height-mobile;
+    }
+
+    //https://codepen.io/dcode-software/pen/NWpZjNB
+    .tab{
+      margin: $base-margin $base-margin*2 $base-margin $base-margin*2;
+      // padding: $base-padding;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: $base-font-size;
+      // max-width: 1200px;
+      // background-color: aqua;
+      border-bottom: $base-border-thickness solid $light-stroke;
+
+      @include mobile{
+        display: none;
+      }
+    }
+
+    .tab-label{
+      padding: $base-padding;
+      cursor: pointer;
+      font-weight: $light;
+      color: $secondary;
+
+    }
+
+    .tab-radio{
+      display: none;
+    }
+
+    .tab-radio:checked + .tab-label {
+      font-weight: $medium;
+      color: $primary;
+      border-bottom: $base-border-thickness*2 solid $primary;
+    }
+    
+    .tab-content{
+      flex:1;
+      display: flex;
+      flex-direction: column;
+      padding-top: 5rem;
+      
+      @include mobile{
+        padding-top: 2rem;
+      }
+    }
+
+// !!!!!!!!!!!!!!!!!TASK LIST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    #tl-content{
+      //background-color:aquamarine;
+      
+      .tasks{
+        //background-color: blue;
+        margin-bottom: $base-margin*6;
+        
+
+        .task-title-wrapper{
+          display: flex;
+          // background-color: cadetblue;
+          // align-items: center;
+
+        }
+
+        .title-len{
+          display: flex;
+          margin-bottom: $base-margin*2;
+          // background-color:blueviolet;
+
+          .task-title{
+            font-size: $base-font-size;
+            font-weight: $regular;
+            line-height: $base-font-size;
+            width:fit-content;
+
+            // @include mobile{
+            //   font-size: $base-font-size;
+            // }
+          }
+          
+          .list-len{
+            width: 1rem;
+            height: 1rem;
+            margin-left: $base-margin;
+            border-radius: $base-border-radius*0.25;
+            background-color: $light-fill;
+            border: $base-border-thickness solid $light-stroke;
+            color: $secondary;
+            font-size: $font-size-xs;
+            line-height: $font-size-xs;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            // @include mobile{
+            //   width: 1rem;
+            //   height: 1rem;
+            //   font-size: $font-size-xs;
+            // }
+
+
+          }
+        }
+
+        #completed{
+          margin: 0;
+        }
+        
+
+      }
+      
+    }
+// !!!!!!!!!!!!!!!!!!KANBAN BOARD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    #kb-content{
+      //overflow:hidden;
+      //padding-left: 5rem;
+      position: relative;
+      //display: flex;
+      //background-color: blue;
+
+
+      .columns{
+        position: absolute;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        width:100%;
+        flex-wrap: nowrap;
+        padding: 0 0 $base-padding*5 $base-padding*5;
+        //overflow-x: auto;
+        //white-space: nowrap;
+        //flex: 1;
+        height: 90%;
+        display: flex;
+        //width: 50%;
+
+
+        //background-color: aquamarine;
+
+
+
+        .column{
+          //flex-grow: 0;
+          //flex-shrink: 0;
+          //background-color: blueviolet;
+          width: $col-width;
+          min-width: $col-width;
+          //height: 100%;
+          margin-right: $base-margin*2;
+
+          .col-top{
+            //background-color: bisque;
+            display: flex;
+            margin-bottom: $base-margin;
+            
+            p{
+
+              font-size: $base-font-size;
+              color: $primary;
+              font-weight: $medium;
+
+            }
+            .col-icon-wrapper{
+
+              //background-color: black;
+              width: fit-content;
+            }
+
+          }
+
+        }
+      }
+      .columns::-webkit-scrollbar {
+        display: none;
+      }
+      
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .columns {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+      display: none;
+    }
+
+    #pmdr-content{
+      position: relative;
+      display: flex;
+      gap: $base-margin*7;
+
+      @include mobile{
+        gap:$base-margin*3;
+      }
+      .settings{
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: $base-margin $base-margin*3 $base-margin $base-margin*3;
+        @include mobile{
+          margin: $base-margin $base-margin*2 $base-margin $base-margin;
+        }
+      }
+      .pmdr-tab{
+        margin: $base-margin $base-margin*2 $base-margin $base-margin*2;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: $font-size-l;
+        background-color: $light-fill;
+        border-radius: $base-border-radius;
+        border-bottom: none;
+        @include mobile{
+          margin-top: $base-margin*2;
+        }
+      }
+
+      .pmdr-tab-label{
+        @extend .tab-label;
+        //width: 100%;
+        text-align: center;
+        padding: $base-padding $base-padding*3 $base-padding $base-padding*3;
+
+        @include mobile{
+          width: 100%;
+          font-size: $font-size-s;
+        }
+
+      }
+
+      #focus-label{
+        @include mobile{
+          border-bottom: $base-border-thickness solid $light-stroke;
+        }
+      }
+
+      #shortbr-label{
+        @include mobile{
+          border-bottom: $base-border-thickness solid $light-stroke;
+        }
+      }
+
+      .pmdr-tab-radio{
+        @extend .tab-radio;
+      }
+      .pmdr-tab-radio:checked + .pmdr-tab-label {
+        font-weight: $medium;
+        color: $primary;
+        background-color: $focus;
+        border-radius: $base-border-radius;
+        border: 0;
+
+      }
+//https://www.youtube.com/watch?v=YDgw6HjMCoQ&ab_channel=CodingArtist
+      .counter-container{
+        width: 20rem;
+        height: 20rem;
+
+        @include mobile{
+          width: 15rem;
+          height: 15rem;
+        }
+        
+        .progress-circle{
+          position: relative;
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+          // background-color: $focus;
+          background-image: conic-gradient(
+            $focus 180deg,
+            $light-fill 180deg,
+
+          );
+          border: $base-border-thickness solid $dark-stroke;
+          display: grid;
+          place-items: center;
+
+          .progress-circle-inner{
+            position: absolute;
+            height: 85%;
+            width: 85%;
+            border-radius: 50%;
+            background-color: $white;
+            border: $base-border-thickness*2 solid $focus-stroke;
+            display: grid;
+            place-items: center;
+
+            .circle-text{
+              text-align: center;
+
+            }
+
+            p{
+              color: $secondary;
+              font-size: $font-size-s;
+              @include mobile{
+                font-size: $font-size-xs;
+              }
+            }
+
+            h1{
+              color: $primary;
+              font-weight: $semibold;
+              font-size: $font-size-xxl;
+              @include mobile{
+                font-size: $font-size-xxl*0.9;
+              }
+            }
+          }
+        }
+      }
+
+      //display:none;
+    }
+
+    #swatch-content{
+      padding: 0;
+      display: grid;
+      place-items: center;
+
+      .stopwatch-container{
+        display: grid;
+        place-items: center;
+        width: 80%;
+        
+        .stopwatch{
+          font-size: $font-size-xxl;
+          font-family: $semibold;
+          color: $primary;
+        }
+
+        .timer-btn-container{
+          display: flex;
+          flex-direction: row;
+          flex-flow: row wrap;
+          margin: $base-margin*5 0;
+        }
+
+      }
+      //display: none;
+    }
+
+    #collections-content{
+      
+      .accordion-item{
+        border-radius: $base-border-radius;
+        border: $base-border-thickness solid $light-stroke;
+        border-left:$base-border-thickness*5 solid $purple;
+
+        position:relative;
+        padding: $base-padding;
+        margin-bottom: $base-margin;
+
+        
+        .label-wrapper{
+          display: flex;
+          
+          .label{
+            display: flex;
+            gap: $base-margin;
+
+            .expand-icon{
+              color: $primary;
+            }
+
+            p{
+
+              font-size:$base-font-size;
+              color: $primary;
+
+            }
+
+            .label-icon-wrapper{
+              .label-icon{
+                padding: $base-padding*0.5;
+                display: none;
+              }
+            }
+
+          }
+
+          .open-all{
+
+            cursor: pointer;
+            p{
+              display: flex;
+              color: $secondary;
+              font-size: $font-size-s;
+              gap: $base-margin*0.5;
+
+              .open-all-text{
+                @include mobile{
+                  display: none;
+                }
+              }
+
+
+              .open-all-icon{
+                font-size: $font-size-s;
+                @include mobile{
+                  font-size: $base-font-size;
+                }
+              }
+
+            }
+
+            p:hover{
+              color: $primary;
+            }
+          }
+        }
+
+        .content{
+          display: flex;
+          flex-direction: column;
+          padding:$base-padding*2;
+          gap: $base-margin*1.5;
+          display: none;
+
+          // max-height:0;
+          // overflow: hidden;
+
+          //background-color: aquamarine;
+
+          // a{
+          //   outline: none;
+          //   text
+          // }
+        }
+      }
+    }
+  }
+
+
+}
