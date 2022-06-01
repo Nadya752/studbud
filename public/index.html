@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="scss/index.scss">
+    <link rel="stylesheet" href="./scss/index.scss">
     <title>StudBud</title>
 </head>
 <body>
@@ -47,9 +48,9 @@
 
         <nav class="navbar align-center">
             <ul class="navicons container ">
-                <li class="navicon">✔️</li>
-                <li class="navicon nav-selected">⏰</li>
-                <li class="navicon">📖</li>
+                <li class="navicon nav-selected" id="nav-1">✔️</li>
+                <li class="navicon" id="nav-2">⏰</li>
+                <li class="navicon" id="nav-3">📖</li>
             </ul>
         </nav>
 
@@ -66,16 +67,16 @@
 
 <!-- ____TASK LIST_____ -->
             <div class="tab-content align-center" id="tl-content">
-                <div class="tasks col-10-desktop col-10-mobile">
+                <div class="tasks col-10-desktop col-10-mobile" id="upcoming-tasks">
                     <div class="title-len justify-start align-center">
                         <p class="task-title">Upcoming tasks</p>
-                        <div class="list-len"><p>1</p></div>
+                        <div class="list-len"><p>0</p></div>
                     </div>
-                    <div class="btn-add">
+                    <div class="btn-add" id="add-task-btn">
                         <p><span class="material-symbols-outlined btn-icon">add</span>Add task</p>
                     </div>
 
-                    <div class="unchecked-card">
+                    <!-- <div class="unchecked-card">
                         <label for="task-1" class="checkbox-container justify-center align-center">
                             <input type="checkbox" id="task-1"/>
                             <span class="checkmark justify-center align-center"><span class="check"></span></span>
@@ -84,14 +85,14 @@
                             <p class="card-title">ICPU 1500 word Self-Reflection</p>
                             <p class="card-detail"><span class="col-tag"></span>by Tues, 11 Apr 2022</p>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
-                <div class="tasks col-10-desktop col-10-mobile">
-                    <div class="task-title-wrapper justify-space-between">
+                <div class="tasks col-10-desktop col-10-mobile" id="completed-tasks">
+                    <div class="task-title-wrapper justify-space-between align-end">
                         <div class="title-len justify-start align-center" id="completed">
                             <p class="task-title" >Completed</p>
-                            <div class="list-len"><p>1</p></div>
+                            <div class="list-len"><p>0</p></div>
                         </div>
                         <div class="button justify-center align-center">
                             <p><span class="material-symbols-outlined btn-icon">visibility_off</span>Hide</p>
@@ -100,51 +101,41 @@
                 </div>
             </div>
 <!-- ____KANBAN BOARD_____ -->
-            <div class="tab-content" id="kb-content">
+            <div class="tab-content is-hide" id="kb-content">
 
                 <div class="columns">
 
-                    <div class="column">
+                    <div class="column" id="c-0">
                         <div class="col-top justify-space-between align-center">
-                            <p>New Tasks</p>
-                            <span class="material-symbols-outlined icon">edit</span>
+                            <p>Upcoming Tasks</p>
+                            <span class="material-symbols-outlined icon edit">edit</span>
                         </div>
-                        <div class="kb-card">
+                        <!-- <div class="kb-card">
                             <p class="kb-card-title">ICPU 1500 word Self-Reflection</p>
-                            <p class="mid-card-detail align-center"><span class="priority">High</span><span class="seperator"></span>3h</p>
-                            <p class="card-detail"><span class="col-tag"></span>by Tues, 11 Apr 2022</p>
-                        </div>
-                        <div class="kb-btn-add">
+                            <p class="mid-card-detail align-center"><span class="priority high">High</span><span class="seperator"></span>3h</p>
+                            <p class="card-detail"><span class="col-tag nocol"></span>by Tues, 11 Apr 2022</p>
+                        </div> -->
+                        <!-- <div class="kb-btn-add">
                             <p><span class="material-symbols-outlined btn-icon">add</span>Add Task</p>
-                        </div>
+                        </div> -->
                     </div>
 
-                    <div class="column">
+                    <div class="column" id="c-1">
                         <div class="col-top justify-space-between align-center">
                             <p>In Progress</p>
                             <div class="col-icon-wrapper">
-                                <span class="material-symbols-outlined icon">edit</span>
-                                <span class="material-symbols-outlined icon">delete</span>
+                                <span class="material-symbols-outlined icon edit">edit</span>
+                                <span class="material-symbols-outlined icon del">delete</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="column">
+                    <div class="column" id="c-2">
                         <div class="col-top justify-space-between align-center">
-                            <p>In Progress</p>
+                            <p>Completed Tasks</p>
                             <div class="col-icon-wrapper">
-                                <span class="material-symbols-outlined icon">edit</span>
-                                <span class="material-symbols-outlined icon">delete</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="col-top justify-space-between align-center">
-                            <p>In Progress</p>
-                            <div class="col-icon-wrapper">
-                                <span class="material-symbols-outlined icon">edit</span>
-                                <span class="material-symbols-outlined icon">delete</span>
+                                <span class="material-symbols-outlined icon edit">edit</span>
+                                <span class="material-symbols-outlined icon del">delete</span>
                             </div>
                         </div>
                     </div>
@@ -165,56 +156,56 @@
                 <p>Create New Task</p>
             </div> -->
 
-            <div class="modal-content">
+            <div class="modal-content" id = "edit-mode-0">
                 <p class="modal-title">Create New Task</p>
 
                 <form action = "#" >
-                    <input class="form-wrapper"type="text" placeholder="Untitled" required>
+                    <input class="form-wrapper"type="text" placeholder="Untitled" name="taskname" required>
                     
                     <div class="form-wrapper form-col">
                         <p class="form-text">Colour</p>
                             <label for="purple-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="purple-tag"/>
+                                <input type="radio" name="coltag" id="purple-tag" value = "1"/>
                                 <span class="coltag justify-center align-center purple" ><span class="check"></span></span>
                             </label>
 
                             <label for="blue-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="blue-tag"/>
+                                <input type="radio" name="coltag" id="blue-tag" value = "2"/>
                                 <span class="coltag justify-center align-center blue"><span class="check"></span></span>
                             </label>
 
                             <label for="green-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="green-tag"/>
+                                <input type="radio" name="coltag" id="green-tag"value = "3"/>
                                 <span class="coltag justify-center align-center green"><span class="check"></span></span>
                             </label>
 
                             <label for="yellow-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="yellow-tag"/>
+                                <input type="radio" name="coltag" id="yellow-tag"value = "4"/>
                                 <span class="coltag justify-center align-center yellow"><span class="check"></span></span>
                             </label>
 
                             <label for="orange-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="orange-tag"/>
+                                <input type="radio" name="coltag" id="orange-tag"value = "5"/>
                                 <span class="coltag justify-center align-center orange"><span class="check"></span></span>
                             </label>
 
                             <label for="red-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="red-tag"/>
+                                <input type="radio" name="coltag" id="red-tag"value = "6"/>
                                 <span class="coltag justify-center align-center red"><span class="check"></span></span>
                             </label>
                     </div>
 
                     <div class="form-wrapper">
                         <p class="form-text-vertical">Due date</p>
-                        <input type="date">
+                        <input type="date" name ="due">
                     </div>
                     <div class="form-wrapper">
                         <p class="form-text-vertical">Priority</p>
                         <div class="select-wrapper">
-                            <select>
-                                <option value="">High</option>
-                                <option value="">Medium</option>
-                                <option value="">Low</option>
+                            <select name ="priority">
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
                             </select>
                             <span class="material-symbols-outlined arrow">expand_more</span>
                         </div>
@@ -226,14 +217,14 @@
                             <div class="time-wrapper">
                                 <p class="form-text-vertical">Hour</p>
                                 <div class="input-wrapper">
-                                    <input type="number" name="est-time"  min="0" step="1" value="0">
+                                    <input type="number" name="esthour"  min="0" step="1" value="0">
                                     <span class="material-symbols-outlined two-arrows">unfold_more</span>
                                 </div>
                             </div>
                             <div class="time-wrapper">
                                 <p class="form-text-vertical">Minutes</p>
                                 <div class="input-wrapper">
-                                    <input type="number" name="est-time"  min="0" max="60" step="1" value="0">
+                                    <input type="number" name="estmin"  min="0" max="60" step="1" value="0">
                                     <span class="material-symbols-outlined two-arrows">unfold_more</span>
                                 </div>
                             </div>
@@ -245,7 +236,7 @@
                         <p class="form-text-tgl">Mark as done</p>
 
                         <label for="task-done" class="tgl-container">
-                            <input type="checkbox" name="tgl-done" id="task-done"/>
+                            <input type="checkbox" name="tgldone" id="task-done"/>
                             <span class="tgl align-center"><span class="tgl-circle"></span></span>
                         </label>
                     </div>
@@ -265,8 +256,45 @@
 
         </div>
     </section>
+    <!-- ____NEW COL MODAL_____ -->
+    <section class="modal-screen is-hide" id ="new-column-modal">
+
+        <div class="modal justify-space-between align-end">
+            <span class="material-symbols-outlined btn-close">close</span>
+
+            <div class="modal-content">
+                <p class="modal-title">Create New Section</p>
+
+                <form action = "#" >
+                    <input class="form-wrapper"type="text" placeholder="Untitled" name="colname" required>
+                    
+                    <div class="form-wrapper form-tgl align-center">
+                        <span class="material-symbols-outlined tgl-icon">done</span>
+                        <p class="form-text-tgl">Mark all tasks in this section as completed</p>
+
+                        <label for="all-done" class="tgl-container">
+                            <input type="checkbox" name="tglalldone" id="all-done"/>
+                            <span class="tgl align-center"><span class="tgl-circle"></span></span>
+                        </label>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-modal cancel">
+                    <p>Cancel</p>
+                </div>
+                <div class="btn-modal action">
+                    <p>Create section</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
 <!-- MODAL EDIT READING -->
-<section class="modal-screen">
+<section class="modal-screen" id="edit-reading-modal">
     <div class="modal justify-start align-start">
         <span class="material-symbols-outlined btn-close">close</span>
 
@@ -327,8 +355,73 @@
         </div>
     </div>
     </section>
+
+<!-- MODAL EDIT Task-->
+<section class="modal-screen" id="detail-task-modal">
+    <div class="modal justify-start align-start">
+        <span class="material-symbols-outlined btn-close">close</span>
+
+        <div class="modal-content">
+            <div class="modal-action-btn-wrapper">
+                <div class="modal-action-btn justify-center align-center" id ="edit-task-t">
+                    <span class="material-symbols-outlined icon">edit</span>
+                    <p class="modal-btn-text">Edit task</p>
+                </div>
+                <div class="modal-action-btn justify-center align-center" id="delete-task-t">
+                    <span class="material-symbols-outlined icon">delete</span>
+                    <p class="modal-btn-text">Delete task</p>
+                </div>
+            </div>
+            <h1 class="reading-title">Introduction to interdisplinary research: theory and practice</h1>
+            <div class="details-wrapper justify-start">
+                <div class="lhs">
+                    <div class="lhs-item">
+                        <span class="material-symbols-outlined detail-icon">sell</span>
+                        <p class="property-text">Colour Tag</p>
+                    </div>
+                    <div class="lhs-item">
+                        <span class="material-symbols-outlined detail-icon">signal_cellular_alt</span>
+                        <p class="property-text">Priority</p>
+                    </div>
+                    <div class="lhs-item">
+                        <span class="material-symbols-outlined detail-icon">calendar_today</span>
+                        <p class="property-text">Due Date</p>
+                    </div>
+                    <div class="lhs-item">
+                        <span class="material-symbols-outlined detail-icon">schedule</span>
+                        <p class="property-text">Completion Time</p>
+                    </div>
+                    <div class="lhs-item">
+                        <span class="material-symbols-outlined detail-icon">show_chart</span>
+                        <p class="property-text">Status</p>
+                    </div>
+                </div>
+                <div class="rhs">
+                    <div class="card-detail task-detail" id="td-col">
+                        <span class="col-tag nocol"></span>
+                        <p>-</p>
+                    </div>
+                    <div class="task-detail align-center" id = "td-prio">
+                        <span class="priority high">High</span>
+                    </div>
+                    <div class="task-detail align-center" id = "td-due">
+                        <p>Tuesday, 22 March 2022</p>
+                    </div>
+                    <div class="task-detail align-center" id ="td-time">
+                        <p>1h</p>
+                    </div>
+                    <div class="task-detail align-center" id = "td-isdone">
+                        <span class="material-symbols-outlined detail-icon">done</span>
+                        <p>Done</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </section>
 <!-- POMODORO - STOPWATCH -->
-    <section class="navcontent" id="pomodoro-stopwatch-tab">
+    <section class="navcontent is-hide" id="pomodoro-stopwatch-tab">
         <div class="tab">
             <input type="radio" class="tab-radio" name="timer" id="pomodoro" checked>
             <label for="pomodoro" class="tab-label">⏰ Pomodoro Timer</label>
@@ -385,7 +478,7 @@
     </section>
 
 <!-- READING - COLLECTION -->
-<section class="navcontent" id="readingls-collections-tab">
+<section class="navcontent is-hide" id="readingls-collections-tab">
     <div class="tab">
         <input type="radio" class="tab-radio" name="readings" id="readingls" checked>
         <label for="readings" class="tab-label">📖 Readings</label>
@@ -475,6 +568,11 @@
         window.open("https://www.google.com", "_blank");
     }
 </script> -->
+<!-- <script type = "module" src="index.js"></script> -->
+<script type = "module" src="taskScreen.js"></script>
+<script type = "module" src="kanbanScreen.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.js'></script>
+
 
 </body>
 </html>

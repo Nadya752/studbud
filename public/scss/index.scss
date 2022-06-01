@@ -30,21 +30,21 @@
 // }
 
 
-#pomodoro-stopwatch-tab{
-  display: none;
-}
+// #pomodoro-stopwatch-tab{
+//   display: none;
+// }
 
-#readingls-collections-tab{
-  display: none;
-}
+// #readingls-collections-tab{
+//   display: none;
+// }
 
 // .modal-screen{
 //   display: none;
 // }
 
-#new-task-modal{
-  display:none;
-}
+// #new-task-modal{
+//   display:none;
+// }
 
 .screen {
   display: flex;
@@ -335,6 +335,7 @@
 // !!!!!!!!!!!!!!!!!TASK LIST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     #tl-content{
       //background-color:aquamarine;
+
       
       .tasks{
         //background-color: blue;
@@ -343,6 +344,8 @@
 
         .task-title-wrapper{
           display: flex;
+          margin-bottom: $base-margin*2;
+
           // background-color: cadetblue;
           // align-items: center;
 
@@ -464,7 +467,7 @@
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
       }
-      display: none;
+      // display: none;
     }
 
     #pmdr-content{
@@ -716,3 +719,38 @@
 
 
 }
+#new-task-modal{
+  display: none;
+}
+
+#edit-reading-modal{
+  display: none;
+}
+
+#detail-task-modal{
+  display: none;
+}
+
+#new-task-modal.is-active{
+  display: block;
+  //background-color: aquamarine;
+}
+
+#detail-task-modal.is-active{
+  display: block;
+}
+// #completed-tasks .unchecked-card{
+//   display: block;
+// }
+// #completed-tasks .is-hide{
+//   display: none !important;
+// }
+
+.is-hide{
+  display: none !important;
+}
+
+
+// #completed-tasks .unchecked-card.is-active{
+//   display: block;
+// }

@@ -77,7 +77,8 @@
             .reading-title{
                 color: $primary;
                 font-size: $font-size-xl;
-                margin-bottom: $base-margin*3;
+                margin-bottom: $base-margin*4;
+                
             }
 
             .details-wrapper{
@@ -95,7 +96,7 @@
                     .lhs-item{
                         display: flex;
                         gap: $base-margin*0.5;
-                        margin-bottom: $base-margin;
+                        margin-bottom: $base-margin*1.75;
 
 
 
@@ -110,7 +111,7 @@
                 .rhs{
                     font-size: $font-size-s;
                     & > *  {
-                        margin-bottom: $base-margin;
+                        margin-bottom: $base-margin*1.75;
                     }
                     .task-detail{
                         color: $primary;
