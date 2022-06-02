@@ -67,7 +67,7 @@
 
 <!-- ____TASK LIST_____ -->
             <div class="tab-content align-center" id="tl-content">
-                <div class="tasks col-10-desktop col-10-mobile" id="upcoming-tasks">
+                <div class="tasks col-10-desktop col-10-mobile tasklists" id="upcoming-tasks">
                     <div class="title-len justify-start align-center">
                         <p class="task-title">Upcoming tasks</p>
                         <div class="list-len"><p>0</p></div>
@@ -88,9 +88,9 @@
                     </div> -->
 
                 </div>
-                <div class="tasks col-10-desktop col-10-mobile" id="completed-tasks">
+                <div class="tasks col-10-desktop col-10-mobile tasklists" id="completed-tasks">
                     <div class="task-title-wrapper justify-space-between align-end">
-                        <div class="title-len justify-start align-center" id="completed">
+                        <div class="title-len justify-start align-center completed">
                             <p class="task-title" >Completed</p>
                             <div class="list-len"><p>0</p></div>
                         </div>
@@ -106,10 +106,11 @@
                 <div class="columns">
 
                     <div class="column" id="c-0">
-                        <div class="col-top justify-space-between align-center">
+                        <div class="no-drag col-top justify-space-between align-center">
                             <p>Upcoming Tasks</p>
                             <span class="material-symbols-outlined icon edit">edit</span>
                         </div>
+                        
                         <!-- <div class="kb-card">
                             <p class="kb-card-title">ICPU 1500 word Self-Reflection</p>
                             <p class="mid-card-detail align-center"><span class="priority high">High</span><span class="seperator"></span>3h</p>
@@ -121,7 +122,7 @@
                     </div>
 
                     <div class="column" id="c-1">
-                        <div class="col-top justify-space-between align-center">
+                        <div class="no-drag col-top justify-space-between align-center">
                             <p>In Progress</p>
                             <div class="col-icon-wrapper">
                                 <span class="material-symbols-outlined icon edit">edit</span>
@@ -131,7 +132,7 @@
                     </div>
 
                     <div class="column" id="c-2">
-                        <div class="col-top justify-space-between align-center">
+                        <div class="no-drag col-top justify-space-between align-center">
                             <p>Completed Tasks</p>
                             <div class="col-icon-wrapper">
                                 <span class="material-symbols-outlined icon edit">edit</span>
@@ -140,8 +141,8 @@
                         </div>
                     </div>
 
-                    <div class="column kb-btn-add">
-                        <p><span class="material-symbols-outlined btn-icon">add</span>Add Section</p>
+                    <div class="column kb-btn-add no-drag">
+                        <p><span class=" material-symbols-outlined btn-icon">add</span>Add Section</p>
                     </div>
                 </div>
             </div>
@@ -293,18 +294,137 @@
 
         </div>
     </section>
-<!-- MODAL EDIT READING -->
-<section class="modal-screen" id="edit-reading-modal">
+    <!-- ____NEW COLLECTION MODAL_____ -->
+    <section class="modal-screen is-hide" id ="new-collection-modal">
+
+        <div class="modal justify-space-between align-end">
+            <span class="material-symbols-outlined btn-close">close</span>
+
+            <div class="modal-content">
+                <p class="modal-title">Create New Collection</p>
+
+                <form action = "#" >
+                    <input class="form-wrapper"type="text" placeholder="Untitled" name="cltname" required>
+                    
+                    <div class="form-wrapper form-col">
+                        <p class="form-text">Colour</p>
+                            <label for="rpurple-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="rcoltag" id="rpurple-tag" value = "1"/>
+                                <span class="coltag justify-center align-center purple" ><span class="check"></span></span>
+                            </label>
+
+                            <label for="rblue-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="rcoltag" id="rblue-tag" value = "2"/>
+                                <span class="coltag justify-center align-center blue"><span class="check"></span></span>
+                            </label>
+
+                            <label for="rgreen-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="rcoltag" id="rgreen-tag"value = "3"/>
+                                <span class="coltag justify-center align-center green"><span class="check"></span></span>
+                            </label>
+
+                            <label for="ryellow-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="rcoltag" id="ryellow-tag"value = "4"/>
+                                <span class="coltag justify-center align-center yellow"><span class="check"></span></span>
+                            </label>
+
+                            <label for="rorange-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="rcoltag" id="rorange-tag"value = "5"/>
+                                <span class="coltag justify-center align-center orange"><span class="check"></span></span>
+                            </label>
+
+                            <label for="rred-tag" class="coltag-container justify-center align-center">
+                                <input type="radio" name="rcoltag" id="rred-tag"value = "6"/>
+                                <span class="coltag justify-center align-center red"><span class="check"></span></span>
+                            </label>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-modal cancel">
+                    <p>Cancel</p>
+                </div>
+                <div class="btn-modal action">
+                    <p>Create collection</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- ____NEW READING MODAL_____ -->
+    <section class="modal-screen is-hide" id ="new-reading-modal">
+
+        <div class="modal justify-space-between align-end">
+            <span class="material-symbols-outlined btn-close">close</span>
+
+            <div class="modal-content">
+                <p class="modal-title">Create New Reading</p>
+
+                <form action = "#" >
+                    <input class="form-wrapper"type="text" placeholder="Untitled" name="rdgname" required>
+                    
+                    <div class="form-wrapper-s form-tgl align-center">
+                        <span class="material-symbols-outlined tgl-icon">done_all</span>
+                        <p class="form-text-tgl">Mark as read</p>
+
+                        <label for="is-read" class="tgl-container">
+                            <input type="checkbox" name="tglread" id="is-read"/>
+                            <span class="tgl align-center"><span class="tgl-circle"></span></span>
+                        </label>
+                    </div>
+                    <div class="form-wrapper form-tgl align-center">
+                        <span class="material-symbols-outlined tgl-icon">bookmark</span>
+                        <p class="form-text-tgl">Bookmark reading</p>
+
+                        <label for="is-bookm" class="tgl-container">
+                            <input type="checkbox" name="tglbookm" id="is-bookm"/>
+                            <span class="tgl align-center"><span class="tgl-circle"></span></span>
+                        </label>
+                    </div>
+                    <div class="form-wrapper">
+                        <p class="form-text-vertical">Link</p>
+                        <input type="text" name ="link" placeholder="https://...">
+                    </div>
+                    <div class="form-wrapper">
+                        <p class="form-text-vertical">Add to collection</p>
+                        <div class="select-wrapper">
+                            <select name ="collection">
+                                <option value="0">None</option>
+                            </select>
+                            <span class="material-symbols-outlined arrow">expand_more</span>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-modal cancel">
+                    <p>Cancel</p>
+                </div>
+                <div class="btn-modal action">
+                    <p>Create reading</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+<!-- MODAL READING DETAIL -->
+<section class="modal-screen is-hide" id="edit-reading-modal">
     <div class="modal justify-start align-start">
         <span class="material-symbols-outlined btn-close">close</span>
 
         <div class="modal-content">
             <div class="modal-action-btn-wrapper">
-                <div class="modal-action-btn justify-center align-center">
+                <div class="modal-action-btn justify-center align-center" id="edit-rdg-r">
                     <span class="material-symbols-outlined icon">edit</span>
                     <p class="modal-btn-text">Edit reading</p>
                 </div>
-                <div class="modal-action-btn justify-center align-center">
+                <div class="modal-action-btn justify-center align-center" id="delete-rdg-r">
                     <span class="material-symbols-outlined icon">delete</span>
                     <p class="modal-btn-text">Delete reading</p>
                 </div>
@@ -327,7 +447,7 @@
                 </div>
                 <div class="rhs">
                     <div class="card-detail task-detail">
-                        <span class="col-tag"></span>
+                        <span class="col-tag nocol"></span>
                         <p>ARCH4109</p>
                     </div>
 
@@ -336,14 +456,14 @@
                     </div>
 
                     <div class="task-detail align-center">
-                        <div class="rhs-item">
+                        <div class="rhs-item" id="isread-dt">
                             <span class="material-symbols-outlined detail-icon">done_all</span>
                             <p>Read</p>
                         </div>
                         <!-- <span><span class="material-symbols-outlined detail-icon">done_all</span>Read</span> -->
                         <span class="seperator"></span>
                         <!-- <span><span class="material-symbols-outlined detail-icon">bookmark</span>Bookmarked</span> -->
-                        <div class="rhs-item">
+                        <div class="rhs-item" id="ispin-dt">
                             <span class="material-symbols-outlined detail-icon">bookmark</span>
                             <p>Bookmarked</p>
                         </div>
@@ -481,17 +601,81 @@
 <section class="navcontent is-hide" id="readingls-collections-tab">
     <div class="tab">
         <input type="radio" class="tab-radio" name="readings" id="readingls" checked>
-        <label for="readings" class="tab-label">📖 Readings</label>
+        <label for="readingls" class="tab-label">📖 Readings</label>
         <input type="radio" class="tab-radio" name="readings" id="collections">
-        <label for="readings" class="tab-label">📚 Collections</label>
+        <label for="collections" class="tab-label">📚 Collections</label>
     </div>
-    <div class="tab-content align-center" id="collections-content">
+
+    <div class="tab-content align-center" id="rd-content">
+        <div class="tasks col-10-desktop col-10-mobile readings" id="unread-readings">
+            <div class="title-len justify-start align-center">
+                <p class="task-title">Unread</p>
+                <div class="list-len"><p>0</p></div>
+            </div>
+            <div class="btn-add" id="add-reading-btn">
+                <p><span class="material-symbols-outlined btn-icon">add</span>Add reading</p>
+            </div>
+
+            <!-- <div class="unchecked-card">
+                <label for="task-1" class="checkbox-container justify-center align-center">
+                    <input type="checkbox" id="task-1"/>
+                    <span class="checkmark justify-center align-center"><span class="check"></span></span>
+                </label>
+                <div class="card-content">
+                    <p class="card-title">ICPU 1500 word Self-Reflection</p>
+                    <div class="detail-wrapper align-center">
+                        <p class="card-detail"><span class="col-tag purple"></span>ARCH4109</p>
+                        <span class="seperator is-hide"></span>
+                        <p class="card-detail is-hide"><span class="material-symbols-outlined detail-icon">done_all</span>Read</p>
+                    </div>
+                </div>
+                <div class="bookmark-icon">
+                    <span class="material-symbols-outlined">bookmark</span>
+                </div>
+
+            </div> -->
+
+        </div>
+        <div class="tasks col-10-desktop col-10-mobile readings" id="read-readings">
+            <div class="task-title-wrapper justify-space-between align-end">
+                <div class="title-len justify-start align-center completed" >
+                    <p class="task-title">Marked as read</p>
+                    <div class="list-len"><p>0</p></div>
+                </div>
+                <div class="button justify-center align-center">
+                    <p><span class="material-symbols-outlined btn-icon">visibility_off</span>Hide</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content align-center is-hide" id="collections-content">
         <div class="accordion col-10-desktop col-10-mobile">
             <div class="btn-add">
                 <p><span class="material-symbols-outlined btn-icon">add</span>Add collection</p>
             </div>
-
+<!-- 
             <div class="accordion-item">
+
+
+                <div class="label-wrapper justify-space-between align-center">
+                    <div class="label justify-start align-center">
+                        <p>ARCH4109</p>
+                        <div class="label-icon-wrapper">
+                            <span class="material-symbols-outlined icon label-icon">edit</span>
+                            <span class="material-symbols-outlined icon label-icon">delete</span>
+                        </div>                    
+                    </div>
+                    <div class="open-all">
+                        <p class="justify-center align-center"><span class="material-symbols-outlined open-all-icon">open_in_new</span><span class ="open-all-text">Open all readings</span></p>
+                    </div>
+                </div>
+
+
+
+            </div> -->
+
+            <!-- <div class="accordion-item">
 
 
                 <div class="label-wrapper justify-space-between align-center">
@@ -519,43 +703,9 @@
                     <div class="reading-btn">
                         <p>Introduction to interdisciplinary research: theory and practice</p>
                     </div>
-                    <!-- <a class="reading-btn" href="https://www.notion.so/" target="_blank">Introduction to interdisciplinary research: theory and practice </a> -->
+                    <a class="reading-btn" href="https://www.notion.so/" target="_blank">Introduction to interdisciplinary research: theory and practice </a>
                 </div>
-
-                
-            </div>
-
-            <div class="accordion-item">
-
-
-                <div class="label-wrapper justify-space-between align-center">
-                    <div class="label justify-start align-center">
-                        <span class="material-symbols-outlined expand-icon">expand_more</span>
-                        <p>ARCH4109</p>
-                        <div class="label-icon-wrapper">
-                            <span class="material-symbols-outlined icon label-icon">edit</span>
-                            <span class="material-symbols-outlined icon label-icon">delete</span>
-                        </div>                    
-                    </div>
-                    <div class="open-all">
-                        <p class="justify-center align-center"><span class="material-symbols-outlined open-all-icon">open_in_new</span><span class ="open-all-text">Open all readings</span></p>
-                    </div>
-                </div>
-
-
-                <div class="content show">
-                    <div class="reading-btn">
-                        <p>Introduction to interdisciplinary research: theory and practice</p>
-                    </div>
-                    <div class="reading-btn">
-                        <p>Introduction to interdisciplinary research: theory and practice</p>
-                    </div>
-                    <div class="reading-btn">
-                        <p>Introduction to interdisciplinary research: theory and practice</p>
-                    </div>
-                    <!-- <a class="reading-btn" href="https://www.notion.so/" target="_blank">Introduction to interdisciplinary research: theory and practice </a> -->
-                </div>
-        </div>
+        </div> -->
 
 
     </div>
@@ -569,7 +719,7 @@
     }
 </script> -->
 <!-- <script type = "module" src="index.js"></script> -->
-<script type = "module" src="taskScreen.js"></script>
+<script type = "module" src="./script.js"></script>
 <script type = "module" src="kanbanScreen.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.js'></script>
 

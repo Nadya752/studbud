@@ -69,8 +69,14 @@ export default class TaskList{
     findTaskByColumn(colId){
         colId = Number(colId);
         //console.log(id);
-        return this.list.find( task => task.getColumn() === colId);
+        return this.list.filter( task => task.getColumn() === colId);
     }
   
-    
+    getAllTasks(){
+        if (this.list.length === 0){
+            return null;
+        }
+
+        return this.list;
+    }
   }

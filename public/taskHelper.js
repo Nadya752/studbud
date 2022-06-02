@@ -1,4 +1,4 @@
-import {cardTemplate, kbCardTemplate} from './template.js';
+import {cardTemplate, kbCardTemplate, rdgTemplate} from './template.js';
 //https://attacomsian.com/blog/javascript-dom-remove-all-children-of-an-element
 export function clearKanban(columns){
     //console.log(columns.children);
@@ -9,6 +9,30 @@ export function clearKanban(columns){
     }
     
 }
+export function clearTaskList(){
+
+    let kbCard = document.querySelectorAll(".kb-card");
+
+    if(kbCard){
+        for (let card of kbCard){
+            let taskObj = tl.findTask(card.id);
+            let parentId = card.parentElement.id.split("-")[1];
+            let columnObj = kb.findColumn(parentId);
+            taskObj.setColumn(parentId);
+            taskObj.setStatus(columnObj.getMarkAllChecked());
+
+        }
+    }
+
+
+    let prevTasks = document.querySelectorAll(".istask");
+
+    if (prevTasks){
+        for (let t of prevTasks){
+            t.remove();
+        }
+    }
+}
 
 export function loadTasksInKb(tl){
     
@@ -16,6 +40,7 @@ export function loadTasksInKb(tl){
         let col = task.getColumn();
         let kbCard = document.createElement('div');
         kbCard.classList.add("kb-card");
+        kbCard.id = task.getId();
         kbCard.innerHTML = kbCardTemplate(task);
 
         if(col === -1){
@@ -51,42 +76,72 @@ export function openModalHandler(component){
     component.classList.add("is-active");
 }
 
-export function createNewTaskElement(task, upcomingList, completedList){
+export function createNewTaskElement(task, upcomingList, completedList, isTask){
 
     const taskCard = document.createElement("div");
     taskCard.classList.add("unchecked-card");
-    taskCard.id =`t${task.getId()}`;
-    createTaskContent(taskCard, task, upcomingList, completedList);
+    if (isTask){
+        taskCard.id =`t${task.getId()}`;
+        taskCard.classList.add("istask");
+    }else{
+        taskCard.id =`r${task.getId()}`;
+        taskCard.classList.add("isreading");
+    }
+    createTaskContent(taskCard, task, upcomingList, completedList, isTask);
     // taskCard.innerHTML = cardTemplate(task.getId(), task.getName(), task.getDisplayDueString(), task.getColorString());
     // task.getStatus() ? completedList.append(taskCard): upcomingList.append(taskCard);
     //console.log(task.getColorString());
 
 }
 
-export function updateTaskElement(task, upcomingList, completedList, upcomingCounter, completedCounter, completedIsHidden){
+export function updateTaskElement(task, upcomingList, completedList, upcomingCounter, completedCounter, completedIsHidden, isTask){
     //let parentList = task.getStatus() ? "#completed-tasks" : "#upcoming-tasks";
-    let taskCardComp = document.querySelector(`#completed-tasks #t${task.getId()}`);
-    let taskCardUp =document.querySelector(`#upcoming-tasks #t${task.getId()}`);
-    let taskCard = taskCardComp ? taskCardComp : taskCardUp;
-    taskCard.innerHTML = cardTemplate(task.getId(), task.getName(), task.getDisplayDueString(), task.getColorString(), task.getStatus());
+    let taskCardComp = null;
+    let taskCardUp =null;
+    let isDone = null;
+    let taskCard = null;
 
+    if (isTask){
+        taskCardComp = document.querySelector(`#completed-tasks #t${task.getId()}`);
+        taskCardUp =document.querySelector(`#upcoming-tasks #t${task.getId()}`);
+        taskCard = taskCardComp ? taskCardComp : taskCardUp;
+        taskCard.innerHTML = cardTemplate(task.getId(), task.getName(), task.getDisplayDueString(), task.getColorString(), task.getStatus());
+        isDone = task.getStatus();
+    }else{
+        taskCardUp = document.querySelector(`#unread-readings #r${task.getId()}`);
+        taskCardComp =document.querySelector(`#read-readings #r${task.getId()}`);
+        taskCard = taskCardComp ? taskCardComp : taskCardUp;
+        taskCard.innerHTML = rdgTemplate(task.getId(), task.getName(), task.getCollection(), task.getIsRead());
+        isDone = task.getIsRead();
+
+    }
+
+    // console.log("INFO:" isDone, taskCardComp, )
     //If task was not done but was ticked done in edit mode.
-    if ((task.getStatus() && !taskCardComp)||!task.getStatus() && !taskCardUp ){
+    if ((isDone && !taskCardComp) || (!isDone && !taskCardUp)){
+        // console.log("hello");
         if(completedIsHidden){
-            tglCompletedTasks();
+            tglCompletedTasks(completedIsHidden, isTask);
         }
-        updateCounter(task.getStatus(), true, upcomingCounter, completedCounter);
-        updateCounter(!task.getStatus(), false, upcomingCounter, completedCounter);
+        updateCounter(isDone, true, upcomingCounter, completedCounter);
+        updateCounter(!isDone, false, upcomingCounter, completedCounter);
         taskCard.remove();
-        createTaskContent(taskCard, task, upcomingList, completedList);
+        createTaskContent(taskCard, task, upcomingList, completedList, isTask);
 
     }
 
 }
 
-export function createTaskContent(taskCard, task, upcomingList, completedList){
-    taskCard.innerHTML = cardTemplate(task.getId(), task.getName(), task.getDisplayDueString(), task.getColorString(), task.getStatus());
-    task.getStatus() ? completedList.append(taskCard): upcomingList.append(taskCard);
+export function createTaskContent(taskCard, task, upcomingList, completedList, isTask){
+
+    if (isTask){
+        taskCard.innerHTML = cardTemplate(task.getId(), task.getName(), task.getDisplayDueString(), task.getColorString(), task.getStatus());
+        task.getStatus() ? completedList.append(taskCard): upcomingList.append(taskCard);
+    }else{
+        taskCard.innerHTML = rdgTemplate(task.getId(), task.getName(), task.getCollection(), task.getIsRead());
+        task.getIsRead() ? completedList.append(taskCard): upcomingList.append(taskCard);
+    }
+
 
 }
 
@@ -127,7 +182,6 @@ export function addInputToTaskList(isEditMode, taskObj, addTaskForm){
 
     // Title
     let name = addTaskForm.elements.taskname.value; 
-    //elements.push(addTaskForm.elements.taskname);
     if (name === ""){
         return false;
     }
@@ -138,32 +192,25 @@ export function addInputToTaskList(isEditMode, taskObj, addTaskForm){
     for(var i = 0; i < colTags.length; i++){
         if(colTags[i].checked){
             colTag = colTags[i].value;
-            //elements.push(colTags[i]);
         }
     }
 
     // Due date
     let due = addTaskForm.elements.due.value; //2022-05-04
-    // console.log(due, due === null);
-    // elements.push(addTaskForm.elements.due);
 
     // Priority level
     let priority = addTaskForm.elements.priority.value; //1, 2, 3
-    // elements.push(addTaskForm.elements.priority);
 
     // Estimated time in hours
     let estHour = addTaskForm.elements.esthour.value;
     estHour = estHour === "" ? 0 : estHour; // 12a becomes empty string!
-    // elements.push(addTaskForm.elements.esthour);
 
     // Estimated time in mins
     let estMin= addTaskForm.elements.estmin.value;
     estMin = estMin === "" ? 0 : estMin;
-    // elements.push(addTaskForm.elements.estmin);
 
     // Task status
     let isDone = addTaskForm.elements.tgldone.checked;
-    // elements.push(addTaskForm.elements.tgldone);
 
     if (!isEditMode){
         // Create new task and add to task list
@@ -178,8 +225,6 @@ export function addInputToTaskList(isEditMode, taskObj, addTaskForm){
         taskObj.setPriority(priority);
         taskObj.setTime([estHour, estMin]);
         taskObj.setStatus(isDone);
-        //console.log(taskObj);
-        //console.log(name, colTag, due, priority, estHour, estMin, isDone )
         newTask = taskObj;
 
     }
@@ -240,33 +285,62 @@ export function insertTargetTaskDetail(task, dtDeleteBtn, dtEditBtn){
 }
 
 //or unchecked
-export function taskChecked(id, upcomingList, completedList, upcomingCounter, completedCounter){
+export function taskChecked(id, upcomingList, completedList, upcomingCounter, completedCounter, isTask){
 
-    let task = tl.findTask(id);
-    task.setStatus(!task.getStatus());
-    updateCounter(task.getStatus(), true, upcomingCounter, completedCounter);
-    updateCounter(!task.getStatus(), false, upcomingCounter, completedCounter)
+    let isDone = null;
+    let task = null;
+    let rdg = null;
+
+    if (isTask){
+        task = tl.findTask(id);
+        task.setStatus(!task.getStatus());
+        isDone = task.getStatus();
+    }else{
+        rdg = rl.find(id, true);
+        rdg.setIsRead(!rdg.getIsRead());
+        isDone = rdg.getIsRead();
+    }
+
+    updateCounter(isDone, true, upcomingCounter, completedCounter);
+    updateCounter(!isDone, false, upcomingCounter, completedCounter);
 
     let taskElement = null;
+    let taskObj = isTask ? task : rdg;
 
-    if (task.getStatus()){
+    if (isDone && isTask){
         taskElement = document.querySelector(`#upcoming-tasks #t${id}`);
         
-    }else{
+    }else if(!isDone && isTask){
         taskElement = document.querySelector(`#completed-tasks #t${id}`);
+
+    }else if(isDone && !isTask){
+        taskElement = document.querySelector(`#unread-readings #r${id}`);
+
+    }else if (!isDone && !isTask){
+        taskElement = document.querySelector(`#read-readings #r${id}`);
     }
 
     taskElement.remove();
-    createTaskContent(taskElement, task,upcomingList, completedList);
+    
+    createTaskContent(taskElement, taskObj, upcomingList, completedList, isTask);
 }
 
-export function tglCompletedTasks(completedIsHidden){
+export function tglCompletedTasks(completedIsHidden, isTask){
+    // console.log("myTgl");
     completedIsHidden = !completedIsHidden;
-    let completedTasks = document.querySelectorAll("#completed-tasks .unchecked-card");
+    let completedTasks = null;
+    if (isTask){
+        completedTasks = document.querySelectorAll("#completed-tasks .unchecked-card");
+    }else{
+        completedTasks = document.querySelectorAll("#read-readings .unchecked-card");
+    }
+
+    // console.log(completedTasks);
+
     for (ct of completedTasks){
         ct.classList.toggle("is-hide");
     }
 
-    return 1;
+    return completedIsHidden
 }
 // 

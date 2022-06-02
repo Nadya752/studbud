@@ -1,6 +1,6 @@
 import Kanban from './kanban.js';
 import TaskList from './tasklist.js';
-import { closeModalHandler, openModalHandler } from './taskScreen.js';
+import { closeModalHandler, openModalHandler } from './script.js';
 import { kbCardTemplate, kbColTemplate } from './template.js';
 
 
@@ -40,6 +40,8 @@ function addInputToSection(form, isEdit, editedColObj){
         colEl.id = `c-${colObj.getId()}`;
         colEl.innerHTML = kbColTemplate(colObj.getName());
         colContainer.insertBefore(colEl, colContainer.lastElementChild);
+        
+        drake.containers.push(colEl);
 
     }else{
         id = editedColObj.getId();
@@ -78,7 +80,23 @@ function insertTargetColDetail(colId, form){
 }
 
 function removeColfromKanban(colId){
+    // let taskOfCol = tl.findTaskByColumn(colId);
+    // if (taskOfCol){
+    //     for (let task in taskOfCol){
+    //         tl.removeTask(task.getId());
+    //     }
+    // }
+
+    // console.log(taskOfCol, tl);
     let colEl = document.querySelector(`#c-${colId}`);
+    // let taskOfCol = [];
+    for (let child of colEl.children){
+        if (child.className === "kb-card"){
+            let taskObj = tl.findTask(child.id);
+            tl.removeTask(taskObj.getId());
+        }
+    }
+
     colEl.remove();
     kb.removeColumn(colId);
 }
@@ -140,15 +158,18 @@ createSectionBtn.addEventListener("click", () => {
 
     if (!isEditMode){
         let newCol = addInputToSection(createSectionForm, false, null);
+        
         if(!newCol){
             return
         }
+
     }else{
         let idArray = colModalContent.id.split("-");
         let id = Number(idArray[idArray.length -1]);
         let editedColObj = kb.findColumn(id);
 
         addInputToSection(createSectionForm, true, editedColObj);
+
     }
 
 

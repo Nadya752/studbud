@@ -1,6 +1,7 @@
 
 .unchecked-card{
     display: flex;
+    position: relative;
     border: $base-border-thickness solid $light-stroke;
     border-radius: $base-border-radius;
     padding: $base-padding*1.5 0 $base-padding*1.5 0;
@@ -97,6 +98,26 @@
     // @include mobile{
     //     font-size: $font-size-xs;
     // }
+}
+
+.detail-wrapper{
+    display: flex;
+    gap: $base-margin*0.25;
+}
+
+.bookmark-icon{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    color:$ternary;
+    span{
+        font-size: $font-size-xl*0.75;
+    }
+}
+
+.is-filled{
+    color: $secondary;
 }
 
 .kb-card{

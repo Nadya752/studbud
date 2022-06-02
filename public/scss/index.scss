@@ -333,70 +333,70 @@
     }
 
 // !!!!!!!!!!!!!!!!!TASK LIST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    #tl-content{
+    // #tl-content{
       //background-color:aquamarine;
 
       
-      .tasks{
-        //background-color: blue;
-        margin-bottom: $base-margin*6;
-        
+    .tasks{
+      //background-color: blue;
+      margin-bottom: $base-margin*6;
+      
 
-        .task-title-wrapper{
-          display: flex;
-          margin-bottom: $base-margin*2;
+      .task-title-wrapper{
+        display: flex;
+        margin-bottom: $base-margin*2;
 
-          // background-color: cadetblue;
-          // align-items: center;
-
-        }
-
-        .title-len{
-          display: flex;
-          margin-bottom: $base-margin*2;
-          // background-color:blueviolet;
-
-          .task-title{
-            font-size: $base-font-size;
-            font-weight: $regular;
-            line-height: $base-font-size;
-            width:fit-content;
-
-            // @include mobile{
-            //   font-size: $base-font-size;
-            // }
-          }
-          
-          .list-len{
-            width: 1rem;
-            height: 1rem;
-            margin-left: $base-margin;
-            border-radius: $base-border-radius*0.25;
-            background-color: $light-fill;
-            border: $base-border-thickness solid $light-stroke;
-            color: $secondary;
-            font-size: $font-size-xs;
-            line-height: $font-size-xs;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            // @include mobile{
-            //   width: 1rem;
-            //   height: 1rem;
-            //   font-size: $font-size-xs;
-            // }
-
-
-          }
-        }
-
-        #completed{
-          margin: 0;
-        }
-        
+        // background-color: cadetblue;
+        // align-items: center;
 
       }
+
+      .title-len{
+        display: flex;
+        margin-bottom: $base-margin*2;
+        // background-color:blueviolet;
+
+        .task-title{
+          font-size: $base-font-size;
+          font-weight: $regular;
+          line-height: $base-font-size;
+          width:fit-content;
+
+          // @include mobile{
+          //   font-size: $base-font-size;
+          // }
+        }
+        
+        .list-len{
+          width: 1rem;
+          height: 1rem;
+          margin-left: $base-margin;
+          border-radius: $base-border-radius*0.25;
+          background-color: $light-fill;
+          border: $base-border-thickness solid $light-stroke;
+          color: $secondary;
+          font-size: $font-size-xs;
+          line-height: $font-size-xs;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          // @include mobile{
+          //   width: 1rem;
+          //   height: 1rem;
+          //   font-size: $font-size-xs;
+          // }
+
+
+        }
+      }
+
+      .completed{
+        margin: 0;
+      }
+        
+
+      // }
       
     }
 // !!!!!!!!!!!!!!!!!!KANBAN BOARD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -631,7 +631,7 @@
       .accordion-item{
         border-radius: $base-border-radius;
         border: $base-border-thickness solid $light-stroke;
-        border-left:$base-border-thickness*5 solid $purple;
+        border-left:$base-border-thickness*5 solid;
 
         position:relative;
         padding: $base-padding;
@@ -659,7 +659,7 @@
             .label-icon-wrapper{
               .label-icon{
                 padding: $base-padding*0.5;
-                display: none;
+                //display: none;
               }
             }
 
@@ -701,7 +701,7 @@
           flex-direction: column;
           padding:$base-padding*2;
           gap: $base-margin*1.5;
-          display: none;
+          //display: none;
 
           // max-height:0;
           // overflow: hidden;
@@ -723,9 +723,9 @@
   display: none;
 }
 
-#edit-reading-modal{
-  display: none;
-}
+// #edit-reading-modal{
+//   display: none;
+// }
 
 #detail-task-modal{
   display: none;
@@ -749,7 +749,6 @@
 .is-hide{
   display: none !important;
 }
-
 
 // #completed-tasks .unchecked-card.is-active{
 //   display: block;

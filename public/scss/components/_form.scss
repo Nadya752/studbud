@@ -2,9 +2,10 @@
 .form-wrapper{
     margin-bottom: $base-margin*3;
 }
-// .form-wrapper-s{
-//     margin-bottom: $base-margin;
-// }
+
+.form-wrapper-s{
+    margin-bottom: $base-margin;
+}
 .form-text{
     font-weight:$medium;
     font-size: $font-size-s;
@@ -39,6 +40,12 @@ input[type=text]{
     font-weight: $semibold;
     cursor:text;
     color: $primary;
+}
+
+
+input[name=link]{
+    font-size: $base-font-size;
+    font-weight: $regular;
 }
 
 input[type=text]:focus {
