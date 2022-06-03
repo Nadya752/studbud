@@ -17,30 +17,36 @@
                 <span class="material-symbols-outlined hamburger-menu">menu</span>
                 <div class="mobile-dropdown-select">
                     <p>✔️ Task List</p>
-                    <span class="material-symbols-outlined expand-icon">expand_more</span>
+                    <!-- <span class="material-symbols-outlined expand-icon">expand_more</span> -->
                 </div>
-                <div class="mobile-dropdown-list">
+                <!-- <div class="mobile-dropdown-list">
                     <p>🗂️ Kanban Board</p>
-                </div>
+                </div> -->
                 <h1 class="music-icon-mobile">🎵</h1>
             </div>
         </nav>
 
-        <nav class="left-nav-mobile">
+        <nav class="left-nav-mobile is-hide">
             <div class="nav-menu-wrapper">
                 <span class="material-symbols-outlined hamburger-menu">menu</span>
-                <input type="radio" class="nav-tab-radio" name="nvm" id="task" checked>
-                <label for="task" class="nav-tab-label">✔️<span class="menu-name">To-dos</span></label>
-                <input type="radio" class="nav-tab-radio" name="nvm" id="timer">
-                <label for="timer" class="nav-tab-label">⏰<span class="menu-name">Timer</span></label>
-                <input type="radio" class="nav-tab-radio" name="nvm" id="reading">
-                <label for="reading" class="nav-tab-label">📖<span class="menu-name">Readings</span></label>
+                <input type="radio" class="nav-tab-radio" name="nvm" id="mtask" checked="true" value = "0">
+                <label for="mtask" class="nav-tab-label" id="mob-nav-0">✔️<span class="menu-name">Task List</span></label>
+                <input type="radio" class="nav-tab-radio" name="nvm" id="mkanban"value = "1">
+                <label for="mkanban" class="nav-tab-label" id="mob-nav-1">🗂️<span class="menu-name" >Kanban Board</span></label>
+                <input type="radio" class="nav-tab-radio" name="nvm" id="mpomodoro" value = "2">
+                <label for="mpomodoro" class="nav-tab-label" id="mob-nav-2" >⏰<span class="menu-name">Pomodoro Timer</span></label>
+                <input type="radio" class="nav-tab-radio" name="nvm" id="mstopwatch" value = "3">
+                <label for="mstopwatch" class="nav-tab-label" id="mob-nav-3">⏱️<span class="menu-name">Stopwatch</span></label>
+                <input type="radio" class="nav-tab-radio" name="nvm" id="mreadings" value = "4">
+                <label for="mreadings" class="nav-tab-label" id="mob-nav-4">📖<span class="menu-name">Readings</span></label>
+                <input type="radio" class="nav-tab-radio" name="nvm" id="mcollections" value = "5">
+                <label for="mcollections" class="nav-tab-label" id="mob-nav-5">📚<span class="menu-name">Collections</span></label>
             </div>
         </nav>
-        <!-- <div class="music-player justify-space-between">
+        <div class="music-player justify-space-between is-hide">
             <iframe class="player" src="https://open.spotify.com/embed/album/5r36AJ6VOJtp00oxSkBZ5h?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
             <span class="material-symbols-outlined dbl-arrow-icon">keyboard_double_arrow_down</span>
-        </div> -->
+        </div>
         <div class="music-player justify-center align-center minimised">
             <h1 class="music-icon">🎵</h1>
             <span class="material-symbols-outlined dbl-arrow-icon" id="dbl-up">keyboard_double_arrow_up</span>
@@ -59,7 +65,7 @@
         <section class="navcontent" id="task-kanban-tab">
 
             <div class="tab">
-                <input type="radio" class="tab-radio" name="todo" id="tasklist" checked>
+                <input type="radio" class="tab-radio" name="todo" id="tasklist" checked="true">
                 <label for="tasklist" class="tab-label">✔️ Task List</label>
                 <input type="radio" class="tab-radio" name="todo" id="kanban">
                 <label for="kanban" class="tab-label">🗂️ Kanban Board</label>
@@ -543,22 +549,10 @@
 <!-- POMODORO - STOPWATCH -->
     <section class="navcontent is-hide" id="pomodoro-stopwatch-tab">
         <div class="tab">
-            <input type="radio" class="tab-radio" name="timer" id="pomodoro" checked>
+            <input type="radio" class="tab-radio" name="timer" id="pomodoro" checked="true">
             <label for="pomodoro" class="tab-label">⏰ Pomodoro Timer</label>
             <input type="radio" class="tab-radio" name="timer" id="stopwatch">
             <label for="stopwatch" class="tab-label">⏱️ Classic Stopwatch</label>
-        </div>
-<!-- STOPWATCH -->
-        <div class="tab-content align-center" id="swatch-content">
-            <div class="stopwatch-container">
-                <h1 class="stopwatch">00:00.00</h1>
-                <div class="timer-btn-container justify-center">
-                    <div class="timer-button"><p>Reset</p></div>
-                    <div class="timer-button"><p>Pause</p></div>
-                </div>
-            </div>
-
-
         </div>
 <!-- POMODORO -->
         <div class="tab-content align-center" id="pmdr-content">
@@ -567,19 +561,19 @@
             </div>
 
             <div class="pmdr-tab">
-                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="focus" checked>
+                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="focus" value="1" checked="true">
                 <label for="focus" class="pmdr-tab-label" id="focus-label">Focus</label>
-                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="shortbr">
+                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="shortbr" value="2">
                 <label for="shortbr" class="pmdr-tab-label"id="shortbr-label">Short Break</label>
-                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="longbr">
+                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="longbr" value="3">
                 <label for="longbr" class="pmdr-tab-label"id="longbr-label">Long Break</label>
             </div>
             <div class="counter-container ">
                 <div class="progress-circle">
                     <div class="progress-circle-inner">
                         <div class="text-container">
-                            <p class ="circle-text">Round 1 of 4</p>
-                            <h1 class="circle-text">25:00</h1>
+                            <p class ="circle-text" id="round-text">Round 1 of 4</p>
+                            <h1 class="circle-text" id="elapsed-time">25:00</h1>
                         </div>
                     </div>
                 </div>
@@ -589,18 +583,91 @@
             <!-- <div class="timer-button"><p>Start</p></div> -->
 
             <div class="timer-btn-container justify-center">
-                <div class="timer-button"><p>Skip to Short Break</p></div>
-                <div class="timer-button"><p>Pause</p></div>
+                <div class="timer-button is-hide" id="pmdr-reset"><p>Reset</p></div>
+                <div class="timer-button" id="pmdr-start"><p>Start</p></div>
             </div>
 
         </div>
-
+    <!-- STOPWATCH -->
+    <div class="tab-content align-center is-hide" id="swatch-content">
+        <div class="stopwatch-container">
+            <h1 class="stopwatch" id="s-elapsed-time">00:00:00.0</h1>
+            <div class="timer-btn-container justify-center">
+                <div class="timer-button is-hide" id="st-reset"><p>Reset</p></div>
+                <div class="timer-button" id="st-start"><p>Start</p></div>
+            </div>
+        </div>
+    </div>
     </section>
+    <!-- ____PMDR SETTINGS MODAL_____ -->
+    <section class="modal-screen is-hide" id ="settings-modal">
 
+        <div class="modal justify-space-between align-end">
+            <span class="material-symbols-outlined btn-close">close</span>
+
+            <div class="modal-content">
+                <p class="modal-title">Pomodoro Settings</p>
+
+                <form action = "#" >
+                    <div class="form-wrapper">
+                        <p class="form-info-text">Time (Minutes)</p>
+                        <div class="stepper-wrapper">
+                            <div class="time-wrapper">
+                                <p class="form-text-vertical">Focus</p>
+                                <div class="input-wrapper">
+                                    <input type="number" name="focusnum"  min="1" step="1" value="1" id="focus-time">
+                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                </div>
+                            </div>
+                            <div class="time-wrapper">
+                                <p class="form-text-vertical">Short Break</p>
+                                <div class="input-wrapper">
+                                    <input type="number" name="shortbrnum"  min="1" max="60" step="1" value="1" id="shortbr-time">
+                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                </div>
+                            </div>
+                            <div class="time-wrapper">
+                                <p class="form-text-vertical">Long Break</p>
+                                <div class="input-wrapper">
+                                    <input type="number" name="longbrnum"  min="1" max="60" step="1" value="1" id="longbr-time">
+                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stepper-wrapper">
+                        <div class="form-wrapper">
+                            <div class="time-wrapper">
+                                <p class="form-text-vertical">Rounds</p>
+                                <div class="input-wrapper">
+                                    <input type="number" name="roundnum"  min="1" step="1" value="1" id="round-num">
+                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-modal cancel">
+                    <p>Cancel</p>
+                </div>
+                <div class="btn-modal action">
+                    <p>Save changes</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
 <!-- READING - COLLECTION -->
 <section class="navcontent is-hide" id="readingls-collections-tab">
     <div class="tab">
-        <input type="radio" class="tab-radio" name="readings" id="readingls" checked>
+        <input type="radio" class="tab-radio" name="readings" id="readingls" checked="true">
         <label for="readingls" class="tab-label">📖 Readings</label>
         <input type="radio" class="tab-radio" name="readings" id="collections">
         <label for="collections" class="tab-label">📚 Collections</label>
@@ -722,6 +789,9 @@
 <script type = "module" src="./script.js"></script>
 <script type = "module" src="kanbanScreen.js"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.js'></script>
+<!-- <script src="../node_modules/easytimer/dist/easytimer.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/easytimer.js@4.5.3/dist/easytimer.min.js"></script>
+
 
 
 </body>

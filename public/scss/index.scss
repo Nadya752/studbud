@@ -88,14 +88,14 @@
       padding-left: 0;
     }
     
-    @include mobile{
-      display: none;
-    }
   
   }
 
   .minimised{
     width:fit-content;
+    @include mobile{
+      display: none;
+    }
   }
 
   .left-nav-mobile{
@@ -104,6 +104,7 @@
     display: flex;
     height: 100vh;
     width: 100%;
+    z-index: 1;
 
 
 
@@ -122,6 +123,7 @@
 
       
       .hamburger-menu{
+        cursor: pointer;
         position: absolute;
         top: 0;
         right: 0;
@@ -151,7 +153,10 @@
       }
     }
 
-    display: none;
+    @include desktop{
+      display: none;
+    }
+
   }
 
   .top-nav-mobile{
@@ -172,16 +177,14 @@
       height: 100%;
       
       .hamburger-menu{
-        //position: absolute;
-        //left: 0;
+        cursor: pointer;
         color: $primary;
         font-size: $font-size-xl;
       }
 
+
       .music-icon-mobile{
-        // position: absolute;
-        // top: 0;
-        // right: 0;
+        cursor: pointer;
         color: $primary;
         font-size: $font-size-l;
         //background-color: $icon-col; //IF CLICKED!!!!
@@ -190,6 +193,7 @@
         border-radius: $base-border-radius;
         // padding: $base-padding;
       }
+
 
       .mobile-dropdown-select{
         color: $primary;
@@ -526,12 +530,13 @@
       }
 
       .pmdr-tab-radio{
-        @extend .tab-radio;
+        // @extend .tab-radio;
+        display: none;
       }
       .pmdr-tab-radio:checked + .pmdr-tab-label {
         font-weight: $medium;
         color: $primary;
-        background-color: $focus;
+        // background-color: $focus;
         border-radius: $base-border-radius;
         border: 0;
 
@@ -552,11 +557,11 @@
           width: 100%;
           border-radius: 50%;
           // background-color: $focus;
-          background-image: conic-gradient(
-            $focus 180deg,
-            $light-fill 180deg,
+          // background-image: conic-gradient(
+          //   $focus 180deg,
+          //   $light-fill 180deg,
 
-          );
+          // );
           border: $base-border-thickness solid $dark-stroke;
           display: grid;
           place-items: center;
@@ -567,7 +572,7 @@
             width: 85%;
             border-radius: 50%;
             background-color: $white;
-            border: $base-border-thickness*2 solid $focus-stroke;
+            border: $base-border-thickness*2 solid;
             display: grid;
             place-items: center;
 
@@ -753,3 +758,5 @@
 // #completed-tasks .unchecked-card.is-active{
 //   display: block;
 // }
+
+
