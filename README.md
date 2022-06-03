@@ -20,7 +20,7 @@ Studbud is a webapp to help university students manage their study sessions.
 
 A cognitive walkthrough with think-aloud protocol was done with 3 participants, and the following refinements was done:
 
-1. Emojis for every studbud features, to better discern between features, as the previous icon bear similar colors with each other.
+1. Emojis for every StudBud features in the navigation menu, to better discern between features as the previous icon bear similar colors with each other.
 2. Adding a checklist feature and removing pin feature from reading list for consistency with task list, for better learnability and memorability.
 4. One-sized navigation menu (i.e., no minimising and expansion features), as it was unnoticed and deemed unnecessary.
 
