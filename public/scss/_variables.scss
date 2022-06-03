@@ -1,3 +1,6 @@
+// SCSS Variables
+
+// Studbud theme colors.
 $primary: #37301C;
 $secondary: #76736D;
 $ternary: #C4C4C4;
@@ -9,6 +12,7 @@ $hover: #F4F4F4;
 $light-grey: #F9F9F9;
 $white: #fff;
 
+// Color tag colors.
 $purple: #6267F3;
 $blue: #55ADF0;
 $green: #6DCDB7;
@@ -16,10 +20,12 @@ $yellow: #F3C84A;
 $orange: #E98239;
 $red: #E04A30;
 
+// Priority tag colors.
 $p-high:#FFE0DE;
 $p-med: #FFF2DE;
 $p-low: #E3FFDE;
 
+// Pomodoro session colors.
 $focus: #D0E6EF;
 $focus-stroke:#70A1B5;
 $shortbr: #D1D0EF;
@@ -27,27 +33,25 @@ $shortbr-stroke: #807EC8;
 $longbr: #EBD0EF;
 $longbr-stroke:#A164AB;
 
-
-
-// font weight
+// Font weight.
 $light: 300;
 $regular: 400;
 $medium: 500;
 $semibold: 600;
 $bold: 700;
 
-//https://github.com/iamshaunjp/complete-sass-tutorial/blob/lesson-19/shinobi/_variables.scss
-// spacing
+// Spacings
 $base-padding: 0.75rem;
 $base-margin: 0.75rem;
 $nav-width: 5rem;
 $nav-height-mobile: 3rem;
 $col-width: 15rem;
 
-// borders
+// Borders
 $base-border-thickness: 1px;
 $base-border-radius: 5px;
-// font sizes
+
+// Font sizes
 $base-font-size: 1rem;
 $font-size-xs: $base-font-size * 0.75;
 $font-size-s: $base-font-size * 0.875;

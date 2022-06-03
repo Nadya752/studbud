@@ -1,7 +1,10 @@
+// SCSS for button components.
 
+// Hide button and settings button.
 .button{
   display: flex;
   cursor: pointer;
+
   p{
     display: flex;
     background-color: $light-fill;
@@ -18,7 +21,6 @@
       font-size: $font-size-xs;
     }
 
-    // display: flex;
   }
 
   .btn-icon{
@@ -30,11 +32,9 @@
       font-size: $font-size-xs;
     }
   }
-
-  
-
 }
 
+// Add buttons
 .btn-add{
   display: block;
   margin-bottom: $base-margin;
@@ -66,7 +66,6 @@
   }
 
 }
-
 .icon{
   color: $icon-col;
   font-size: $font-size-l;
@@ -80,13 +79,14 @@
   cursor: pointer
 }
 
+// Kanban add button.
 .kb-btn-add{
   @extend .btn-add;
   height:fit-content;
   width: $col-width;
 }
 
-//MODAL
+// Modal buttons
 .btn-close{
   background-color: $light-fill;
   padding: $base-padding*0.75;
@@ -140,7 +140,7 @@
 }
 
 
-
+// Timer button.
 .timer-btn-container{
   display: flex;
   flex-flow: row wrap;
@@ -159,8 +159,7 @@
   }
 }
 
-
-
+// Buttons in reading screen.
 .reading-btn{
   padding: $base-padding;
   background-color: $light-grey;

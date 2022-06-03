@@ -10,7 +10,7 @@ const UPCOMING_ID = 0;
 * with only minor changes and it is not my own work. 
 * 
 * Original URL
-* //https://attacomsian.com/blog/javascript-dom-remove-all-children-of-an-element
+* https://attacomsian.com/blog/javascript-dom-remove-all-children-of-an-element
 * Last access June, 2022
 */
 

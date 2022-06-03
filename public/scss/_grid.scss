@@ -1,9 +1,17 @@
+/* USYD CODE CITATION ACKNOWLEDGEMENT
+* I declare that the following lines of code have been copied from the
+* website titled: "Complete SASS Tutorial"
+* with only minor changes and it is not my own work. 
+* 
+* Original URL
+* https://github.com/iamshaunjp/complete-sass-tutorial/tree/lesson-19
+* Last access May, 2022
+*/
+
 $grid-columns: 12;
 $layout: start, end, center, space-between, space-around;
 
 .container{
-    // width: fit-content;
-    // max-width: 1200px;
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
@@ -14,7 +22,7 @@ $layout: start, end, center, space-between, space-around;
     flex-flow: row wrap;
 }
 
-// justify & align values
+// Justify & align values
 @each $val in $layout {
     .justify-#{$val} {
       justify-content: $val;
@@ -24,6 +32,7 @@ $layout: start, end, center, space-between, space-around;
     }
 }
 
+// Grids for column size.
 @include mobile{
     @for $i from 1 through $grid-columns {
         .col-#{$i}-mobile {
@@ -42,3 +51,4 @@ $layout: start, end, center, space-between, space-around;
         }
       }
 }
+/* end of copied code */

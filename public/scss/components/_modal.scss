@@ -1,6 +1,5 @@
-//https://codepen.io/bradtraversy/pen/zEOrPp?editors=1010
+// SCSS for modal screen and its elements.
 .modal-screen{
-    //display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -9,7 +8,6 @@
     width: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
-
 
     .modal{
         min-width: 300px;
@@ -24,24 +22,7 @@
         display: flex;
         flex-direction: column;
 
-
-
-        // .modal-title{
-        //     position: absolute;
-        //     top: 0;
-        //     left: 0;
-        //     margin: $base-margin*2 0 0 $base-margin*2;
-        //     display: flex;
-            
-        //     p{
-        //         color: $secondary;
-        //         font-size: $font-size-xs;
-        //     }
-
-        // }
-
         .modal-content{
-            // margin: $base-margin 0;
             
             .modal-title{
                 color: $secondary;
@@ -53,14 +34,11 @@
                 display: flex;
                 gap: $base-margin;
                 margin-bottom: $base-margin;
-                
-                //background-color: aquamarine;
 
                 .modal-action-btn{
                     display:flex;
                     cursor:pointer;
-                    //flex-flow: row wrap;
-                    //background-color: blue;
+
                     .modal-btn-text{
                         color: $secondary;
                         font-size: $font-size-xs;
@@ -68,6 +46,7 @@
                     }
                     
                 }
+
                 .modal-action-btn:hover{
                     background-color: $hover;
                 }
@@ -85,29 +64,23 @@
                 display: flex;
                 gap: $base-margin*5;
                 
-
                 @include mobile-xs{
                     gap: $base-margin;
                 }
                 
-                
-
                 .lhs{
                     .lhs-item{
                         display: flex;
                         gap: $base-margin*0.5;
                         margin-bottom: $base-margin*1.75;
 
-
-
                         .property-text{
                             color:$secondary;
                             font-size: $font-size-s;
                         }
                     }
-
-
                 }
+
                 .rhs{
                     font-size: $font-size-s;
                     & > *  {
@@ -119,26 +92,19 @@
                         display: flex;
                         gap:$base-margin*0.25;
                     
-                        
-
-
                         .rhs-item{
                             display: flex;
                             gap: $base-margin*0.25;
                         }
-                        
 
                     }
 
                     a:link, a:visited {
                         color: $primary;
-                        //border-bottom: $base-border-thickness solid $dark-stroke;
                         text-decoration: underline;
                         text-decoration-color: $dark-stroke;
                         text-decoration-thickness: $base-border-thickness;
-                        //padding: $base-padding*0.75;
-                        
-                        //display: inline-block;
+
                     }
                       
                     a:hover, a:active {
@@ -155,18 +121,11 @@
         }
 
         .modal-footer{
-            // position: absolute;
-            // bottom: 0;
-            // right: 0;
             display: flex;
             gap: $base-margin;
         }
 
-
         @include mobile{
-            // top: 0;
-            // left: 0;
-
             max-width: 100vh;
             height: 100vh;
             overflow-y: scroll;
@@ -176,7 +135,7 @@
     }
 }
 
-// !!!!!!!TRANSFER THIS SMomehwere
+// Detail icon of details modal.
 .detail-icon{
     font-size: $base-font-size;
     align-self: center;

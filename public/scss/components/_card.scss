@@ -1,4 +1,6 @@
+// SCSS for task card, kanban card, and reading card component.
 
+// Task card and reading card.
 .unchecked-card{
     display: flex;
     position: relative;
@@ -6,7 +8,6 @@
     border-radius: $base-border-radius;
     padding: $base-padding*1.5 0 $base-padding*1.5 0;
     margin-bottom: $base-margin;
-    
     cursor: pointer;
     
     .checkbox-container {
@@ -16,21 +17,18 @@
 
         input[type=checkbox] {
             position: absolute;
-            //appearance: none;
             opacity: 0;
             height: 0;
             width: 0;
         }
 
         .checkmark{
-            // display: inline-block;
             display:flex;
             height: 26px;
             width: 26px;
             background-color: $white;
             border: $base-border-thickness*1.5 solid $ternary;
             border-radius: 50%;
-
         }
 
         .checkmark:hover{
@@ -38,7 +36,6 @@
         }
 
         input[type=checkbox]:checked ~ .checkmark {
-            // background-color: blue;
             .check{
                 width: 5px;
                 height: 12px;
@@ -53,6 +50,7 @@
     }
 
 }
+
 .unchecked-card:hover {
     background-color: $hover;
 }
@@ -62,7 +60,6 @@
     display: block;
     padding: 0;
     margin: 0 0 $base-margin*0.5 0;
-    //background-color: aquamarine;
     font-size: $font-size-l;
     font-weight: $medium;
     color: $primary;
@@ -76,7 +73,7 @@
 .card-detail{
     display: flex;
     font-size: $font-size-xs;
-    //background-color: $yellow;
+
     color: $secondary;
 
     .col-tag{
@@ -84,20 +81,9 @@
         margin: 0 $base-margin*0.5 0 0;
         width: .5rem;
         height: .5rem;
-        // background:$ternary;
         border-radius:  50%;
         align-self: center;
-
-
-        // @include mobile{
-        //     width: .5rem;
-        //     height: .5rem;
-        // }
-
     }
-    // @include mobile{
-    //     font-size: $font-size-xs;
-    // }
 }
 
 .detail-wrapper{
@@ -109,8 +95,8 @@
     color: $secondary;
 }
 
+// Kanban Card.
 .kb-card{
-    //background-color: aqua;
     border: $base-border-thickness solid $light-stroke;
     border-radius: $base-border-radius;
     padding:$base-padding*1.5;
@@ -126,8 +112,6 @@
         @extend .card-detail;
         margin: 0 0 $base-margin*0.5 0;
         display: flex;
-        
-
     }
 
 }
@@ -138,13 +122,11 @@
 }
 
 .priority{
-    //background-color: $p-high;
     padding:$base-padding*0.15 $base-padding*0.5;
     border-radius: $base-border-radius*0.5;
 }
 
 .seperator{
-    
     display: inline-block;
     margin: $base-margin*0.25 $base-margin*0.25;
     width: 4px;
@@ -152,13 +134,9 @@
     background:$ternary;
     border-radius:  50%;
 
-    
-    
-
-
 }
 
-
+// Priority tag fill colours.
 .high{
     background-color: $p-high;
 }
@@ -170,30 +148,3 @@
 .low{
     background-color: $p-low;
 }
-
-// .card-detail.coltag .purple{
-//     background: $purple;
-// }
-// .card-detail.coltag .blue{
-//     background: $blue;
-// }
-
-// .card-detail.coltag .green{
-//     background: $green;
-// }
-
-// .card-detail.coltag .yellow{
-//     background: $yellow;
-// }
-
-// .card-detail.coltag .orange{
-//     background: $orange;
-// }
-
-// .card-detail.coltag .red{
-//     background: $red;
-// }
-
-// .card-detail.coltag .nocol{
-//     background: $ternary;
-// }
