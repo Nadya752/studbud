@@ -1,3 +1,6 @@
+import {color} from "./task";
+
+// Collection properties.
 export const cp ={
     NAME: 0,
     COLOR: 1
@@ -8,56 +11,60 @@ export class Collection{
         this.id = null;
         this.name = name;
         this.color = Number(color);
-        // this.list = [];
     }
 
+    // Getter function for collection id.
     getId(){
         return this.id;
     }
-
+    // Setter function for collection id.
     setId(id){
         this.id = Number(id);
     }
 
+    // Getter function for collection name.
     getName(){
         return this.name;
     }
 
+    // Setter function for colelction name.
     setName(newName){
         if(newName !== null && newName !== ""){
             this.name = newName;
         }
     }
 
+    // Getter function for collection color tag.
     getColor(){
         return this.color;
     }
 
+    // Getter function for collection color tag in string.
     getColorString(){
         let col = null;
-        // console.log("MYCOL", this.color);
+
         switch(this.color){
-            case 1:
+            case color.PURPLE:
                 col = 'purple';
                 break;
         
-            case 2:
+            case color.BLUE:
                 col = 'blue';
                 break;
         
-            case 3:
+            case color.GREEN:
                 col = 'green';
                 break;
 
-            case 4:
+            case color.YELLOW:
                 col = 'yellow';
                 break;
 
-            case 5:
+            case color.ORANGE:
                 col = 'orange';
                 break;
 
-            case 6:
+            case color.RED:
                 col =  'red';
                 break;
         
@@ -68,12 +75,12 @@ export class Collection{
         return col;
     }
 
+    // Setter function for collection color tag.
     setColor(newColor){
         if (newColor !== null && newColor >= 1 && newColor <= 6){
             this.color = Number(newColor);
         }
     }
-
 
 }
 

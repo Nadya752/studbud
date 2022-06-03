@@ -1,11 +1,31 @@
+const DUE_END_SUBSTRING = 10; // Number of characters from Date object's ISOstring without time.
+
+// Task properties.
 export const tp={
-    // id: 0,
-    name: 0,
-    col: 1,
-    due: 2,
-    priority: 3,
-    time: 4,
-    isDone: 5,
+    NAME: 0,
+    COL: 1,
+    DUE: 2,
+    PRIORITY: 3,
+    TIME: 4,
+    ISDONE: 5,
+}
+
+// Task color tags.
+export const color = {
+    PURPLE: 1,
+    BLUE: 2,
+    GREEN: 3,
+    YELLOW: 4,
+    ORANGE: 5,
+    RED: 6
+
+}
+
+// Task prioriy levels.
+export const priority = {
+    HIGH: 1,
+    MEDIUM: 2,
+    LOW: 3
 }
 
 export class Task{
@@ -13,74 +33,81 @@ export class Task{
     constructor(id, name, color, due, priority, time, isDone){
         this.id= id;
         this.name = name;
-        this.color= color; // 0 if no color
+        this.color= color; // color tag is 0 if no color picked.
         this.due = due === "" ? false : new Date(due);
         this.priority = Number(priority);
-        this.time = [Number(time[0]), Number(time[1])];
+        this.time = [Number(time[0]), Number(time[1])]; // In hours and minutes.
         this.isDone= isDone;
         this.column = -1;
       
     }
 
+    // Getter function for task id.
     getId(){
         return this.id;
     }
 
+    // Setter function for task id.
     setId(id){
         this.id = id;
     }
 
+    // Getter function for task name.
     getName(){
         return this.name;
     }
 
+    // Setter function for task name.
     setName(newName){
         if(newName !== null && newName !== ""){
             this.name = newName;
-
             return 1;
         }
 
         return 0;
     }
 
+    // Getter function for task color tag.
     getColor(){
         return this.color;
     }
 
+    // Setter function for task color tag.
     setColor(newColor){
-        if (newColor !== null && newColor >= 1 && newColor <= 6){
+        if (newColor !== null && newColor >= color.PURPLE && newColor <= color.RED){
             this.color = Number(newColor);
             return 1;
         }
 
         return 0;
     }
+
+    // Getter function for task color tag in string.
     getColorString(){
         let col = null;
-        // console.log("MYCOL", this.color);
+
         switch(this.color){
-            case 1:
+            case color.PURPLE:
                 col = 'purple';
                 break;
         
-            case 2:
+            case color.BLUE:
                 col = 'blue';
                 break;
         
-            case 3:
+            case color.GREEN:
                 col = 'green';
                 break;
 
-            case 4:
+            case color.YELLOW:
                 col = 'yellow';
                 break;
 
-            case 5:
+            case color.ORANGE:
                 col = 'orange';
                 break;
 
-            case 6:
+            case color.RED:
                 col =  'red';
                 break;
         
@@ -91,14 +118,16 @@ export class Task{
         return col;
     }
 
+    // Getter function for task due date.
     getDue(){
         if (this.due){
-            return this.due.toISOString().substr(0, 10);
+            return this.due.toISOString().substr(0, DUE_END_SUBSTRING);
         }
 
       return 0;
     }
 
+    // Setter function for task due date.
     setDue(newDue){
         if (newDue !== null && newDue !== ""){
             this.due= new Date(newDue);
@@ -109,10 +138,7 @@ export class Task{
         return 0;
     }
 
-    // getDueString(){
-    //     // console.log("MY DUE", this.due);
-    //     return !this.due ? "" : this.due.toDateString();
-    // }
+    // Getter function for task due date in string
     getDisplayDueString(isComplete){
 
         let newDue = null;
@@ -120,9 +146,9 @@ export class Task{
         if (!this.due){
             return "-";
         }
-    
+        
+        // Get date string from Date object and complete its day string.
         let dueArray = this.due.toDateString().split(" ");
-        //console.log(dueString, dueArray);
         if (!isComplete){
             day = dueArray[0] + ","
     
@@ -161,21 +187,22 @@ export class Task{
                     col = 'Invalid day';
                
             }
-    
-            // dueArray = dueArray.splice(0, 0, day);
-            // newDue = dueArray 
+
         }
-    
+        
+
+        // Join completed day string and date string.
         dueArray.splice(0, 1, day);
         newDue = dueArray.join(" ");
-        //console.log(dueArray, newDue);
         return newDue;
     }
     
+    // Getter function for task estimated time completion.
     getTime(){
       return this.time;
     }
     
+    // Setter function for task estimated time completion.
     setTime(newTime){
         if (newTime !== null){
             this.time=newTime;
@@ -186,21 +213,26 @@ export class Task{
         return 0;
     }
 
+    // Getter function for task in string.
     getTimeString(){
 
         let hour = this.time[0];
         let min = this.time[1];
         let timeString = null;
 
+        // If in minutes only.
         if (min >0 && hour === 0){
             timeString = `${min} min`;
 
+        // If in hours only.
         }else if (min === 0 && hour > 0){
             timeString = `${hour} hr`;
-
+        
+        // If in hours and minutes.
         }else if (min > 0 && hour > 0){
             timeString = `${hour} hr ${min} min`;
-
+        
+        // No estimated time.
         }else{
             timeString = "-";
         }
@@ -208,12 +240,14 @@ export class Task{
         return timeString;
     }
     
+    // Getter function for task priority level.
     getPriority(){
         return this.priority;
     }
 
+    // Setter function for task priority level.
     setPriority(newPriority){
-        if(newPriority !== null && newPriority > 0 && newPriority <= 3){
+        if(newPriority !== null && newPriority >= priority.HIGH && newPriority <= priority.LOW){
             this.priority= Number(newPriority);
             return 1;
         }
@@ -221,18 +255,19 @@ export class Task{
         return 0;
     }
 
+    // Getter function for task priority in string.
     getPriorityString(){
       let p = null;
       switch(this.priority){
-        case 1:
+        case priority.HIGH:
           p = 'high';
           break;
   
-        case 2:
+        case priority.MEDIUM:
           p = 'medium';
           break;
   
-        case 3:
+        case priority.LOW:
           p = 'low';
           break;
   
@@ -243,26 +278,31 @@ export class Task{
       return p;
     }
     
+    // Getter function for task status (i.e., Done or not done).
     getStatus(){
         return this.isDone;
     }
 
+    // Setter function for task status.
     setStatus(newStatus){
         this.isDone = newStatus;
         return 1;
     }
 
+    // Getter function for task status in string.
     getStatusString(){
       return this.isDone ? 'Done' : 'Not Done';
     }
 
+    // Getter function for task location in kanban column.
     getColumn(){
         return this.column;
     }
 
+    // Setter function for task location in kanban column.
     setColumn(newColumn){
         this.column = newColumn;
     }
-  }
+    
+}
   
-// export {tp, Task};

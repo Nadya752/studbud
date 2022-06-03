@@ -1,23 +1,23 @@
-import {tab} from './pmdrHelper.js';
+import {tab} from '../helper/pmdrHelper.js';
 
 export default class StudyTimer{
-    constructor(maxFocus, maxShortBreak, maxLongBreak, maxRound){
 
+    constructor(maxFocus, maxShortBreak, maxLongBreak, maxRound){
         this.currentFocus= 0;
-        this.maxFocus = maxFocus;
+        this.maxFocus = maxFocus; // focus session limit.
 
         this.currentShortBreak = 0;
-        this.maxShortBreak = maxShortBreak;
+        this.maxShortBreak = maxShortBreak; // short break session limit.
         
         this.currentLongBreak = 0;
-        this.maxLongBreak = maxLongBreak;
+        this.maxLongBreak = maxLongBreak; // long break session limit.
 
         this.currentRound = 1;
-        this.maxRound = maxRound
+        this.maxRound = maxRound // round limit.
 
-        // this.stopwatchTime = 0;
     }
 
+    // Getter function for pomodoro current session.
     getCurrent(session){
         if (session === null){
             return;
@@ -36,6 +36,7 @@ export default class StudyTimer{
 
     }
 
+    // Setter function for pomodoro current session.
     setCurrent(session, value){
         if (session === null || value === null){
             return;
@@ -54,6 +55,7 @@ export default class StudyTimer{
 
     }
 
+    // Getter function for pomodoro session limits.
     getMax(session){
         if (session === null){
             return;
@@ -71,6 +73,7 @@ export default class StudyTimer{
         }
     }
 
+    // Setter function for pomodoro current session.
     setMax(session, value){
         if (session === null || value === null){
             return;
@@ -90,10 +93,12 @@ export default class StudyTimer{
 
     }
 
+    // Getter function for pomodoro current round.
     getCurrentRound(){
         return this.currentRound;
     }
-
+    
+    // Setter function for pomodoro current round.
     setCurrentRound(newRound){
         newRound = Number(newRound);
         if (newRound === null || newRound <= 0){
@@ -103,15 +108,16 @@ export default class StudyTimer{
         this.currentRound = newRound;
     }
 
+    // Getter function for pomodoro round limit.
     getMaxRound(){
         return this.maxRound;
     }
 
+    // Setter function for pomodoro round limit
     setMaxRound(newRound){
         newRound = Number(newRound);
         if (newRound === null || newRound <= 0){
             return;
-
         }
 
         this.maxRound = newRound;
@@ -120,14 +126,15 @@ export default class StudyTimer{
         }
     }
 
+    // Increment pomodoro current round.
     incrementRound(){
         this.currentRound++;
+
+        // Sets current round back to 1 if current round reaches round limit.
         if (this.currentRound !== this.maxRound){
             this.currentRound %= this.maxRound;
         }
         
     }
-
-
 
 }

@@ -1,12 +1,13 @@
-
+// Column class for kanban board.
 export default class Column{
 
     constructor(id, name, markAllChecked){
         this.id = Number(id);
         this.name = name;
-        this.markAllChecked = markAllChecked;
+        this.markAllChecked = markAllChecked; // If true then all tasks inside the column is checked as Done.
     }
 
+    // Check if name is a string.
     static nameIsValid(newName){
         if (newName !== null && newName != "" && 
         (newName instanceof String || typeof newName === "string")){
@@ -16,10 +17,12 @@ export default class Column{
         return false;
     }
 
+    // Getter function for column id.
     getId(){
         return this.id;
     }
 
+    // Setter function for column id.
     setId(newId){
         if(newId !== null){
             this.id= Number(newId);
@@ -29,10 +32,12 @@ export default class Column{
         return 0;
     }
 
+    // Getter function for column name.
     getName(){
         return this.name;
     }
 
+    // Setter function for column name.
     setName(newName){
         if (Column.nameIsValid(newName)){
             this.name = newName;
@@ -41,12 +46,15 @@ export default class Column{
         return 0;
     }
 
+    // Getter function for column MarkAllChecked property.
     getMarkAllChecked(){
         return this.markAllChecked;
     }
 
+    // Setter function for column MarkAllChecked property.
     setMarkAllChecked(isMarkAllChecked){
         this.markAllChecked = isMarkAllChecked;
 
     }
+    
 }

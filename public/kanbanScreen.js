@@ -1,8 +1,4 @@
-import Kanban from './kanban.js';
-import TaskList from './tasklist.js';
-import { closeModalHandler, openModalHandler } from './script.js';
-import { kbCardTemplate, kbColTemplate } from './template.js';
-
+import * as t from './helper/taskHelper';
 
 const colContainer = document.querySelector(".columns");
 const addColBtn = document.querySelector(".kb-btn-add");
@@ -16,92 +12,7 @@ const actionBtn = document.querySelector("#new-column-modal .btn-modal.action p"
 const colModalContent = document.querySelector("#new-column-modal .modal-content");
 
 
-
-function clearColForm(form){
-    form.elements.colname.value = "";
-    form.elements.tglalldone.checked = false;
-}
-
-function addInputToSection(form, isEdit, editedColObj){
-    
-    let name = form.elements.colname.value;
-    let markAllDone = form.elements.tglalldone.checked;
-    let id = null;
-
-    if(!isEdit){
-        if (name === ""){
-            return 0;
-        }
-    
-        let colObj = kb.addColumn(name,markAllDone);
-        id = colObj.getId();
-        let colEl = document.createElement("div");
-        colEl.classList.add("column");
-        colEl.id = `c-${colObj.getId()}`;
-        colEl.innerHTML = kbColTemplate(colObj.getName());
-        colContainer.insertBefore(colEl, colContainer.lastElementChild);
-        
-        drake.containers.push(colEl);
-
-    }else{
-        id = editedColObj.getId();
-        editedColObj.setName(name);
-        editedColObj.setMarkAllChecked(markAllDone);
-
-        let colEl = document.querySelector(`#c-${editedColObj.getId()} p`);
-        colEl.innerText = name;
-    }
-
-    // let tasksInCol = tl.findTaskByColumn(id);
-    // console.log(tasksInCol);
-    // for (task of tasksInCol){
-    //     task.setStatus(markAllDone); 
-    // }
-
-
-    return 1;
-
-
-}
-
-function insertTargetColDetail(colId, form){
-    let modalTitle = document.querySelector("#new-column-modal .modal-title");
-    let actionBtn = document.querySelector("#new-column-modal .btn-modal.action p");
-
-    modalTitle.innerText= "Edit Section";
-    actionBtn.innerText = "Save Changes";
-
-    let colObj = kb.findColumn(colId);
-
-    form.elements.colname.value = colObj.getName();
-    form.elements.tglalldone.checked = colObj.getMarkAllChecked();
-
-
-}
-
-function removeColfromKanban(colId){
-    // let taskOfCol = tl.findTaskByColumn(colId);
-    // if (taskOfCol){
-    //     for (let task in taskOfCol){
-    //         tl.removeTask(task.getId());
-    //     }
-    // }
-
-    // console.log(taskOfCol, tl);
-    let colEl = document.querySelector(`#c-${colId}`);
-    // let taskOfCol = [];
-    for (let child of colEl.children){
-        if (child.className === "kb-card"){
-            let taskObj = tl.findTask(child.id);
-            tl.removeTask(taskObj.getId());
-        }
-    }
-
-    colEl.remove();
-    kb.removeColumn(colId);
-}
-
-
+// Handler when column
 colContainer.addEventListener("click", (e) =>{
     let edit = "material-symbols-outlined icon edit";
     let del = "material-symbols-outlined icon del";
@@ -111,6 +22,8 @@ colContainer.addEventListener("click", (e) =>{
     let id = null;
     
     if (targetTag === "SPAN"){
+
+        // Get column id.
         let current = e.target;
         while(current.id === ""){
             current = current.parentElement;
@@ -118,62 +31,61 @@ colContainer.addEventListener("click", (e) =>{
         let idArray = current.id.split("-");
         id = idArray[idArray.length -1];
         
-
+        // Open edit modal.
         if (targetName === edit){
             colModalContent.id = `edit-${id}`;
-            insertTargetColDetail(id, createSectionForm);
+            t.insertTargetColDetail(id, createSectionForm);
             newColModal.classList.toggle('is-hide');
-
+        
+        // Delete column.
         }else if (targetName === del){
-            removeColfromKanban(id);
+            t.removeColfromKanban(id);
         }
     }
 
 })
 
-
-
+// Handler for column button.
 addColBtn.addEventListener("click", () => {
-    clearColForm(createSectionForm);
+    t.clearColForm(createSectionForm);
     modalTitle.innerText= "Create New Section";
     actionBtn.innerText = "Create section";
     colModalContent.id = "create";
     newColModal.classList.toggle('is-hide');
 })
 
+// Handler for cancel icon from columnn modal.
 ncCancelIcon.addEventListener("click", () => {
     newColModal.classList.toggle('is-hide');
 })
 
+// Handler for cancel button from columnn modal.
 ncCancelBtn.addEventListener("click", () =>{
     newColModal.classList.toggle('is-hide');
 })
 
+// Handler for create column button from columnn modal.
 createSectionBtn.addEventListener("click", () => {
-    //console.log(createSectionForm);
 
+    // Check if modal is in edit mode.
     let isEditMode = colModalContent.id === "create" ? false : true;
 
-
-
+    // Create column if not edit mode.
     if (!isEditMode){
-        let newCol = addInputToSection(createSectionForm, false, null);
-        
+        let newCol = t.addInputToSection(createSectionForm, false, null, drake);
         if(!newCol){
             return
         }
 
+    // Update column if is in edit mode.
     }else{
         let idArray = colModalContent.id.split("-");
         let id = Number(idArray[idArray.length -1]);
         let editedColObj = kb.findColumn(id);
-
-        addInputToSection(createSectionForm, true, editedColObj);
+        t.addInputToSection(createSectionForm, true, editedColObj, drake);
 
     }
 
-
     newColModal.classList.toggle('is-hide');
-
 
 })

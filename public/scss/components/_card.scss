@@ -105,17 +105,6 @@
     gap: $base-margin*0.25;
 }
 
-.bookmark-icon{
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(-50%, -50%);
-    color:$ternary;
-    span{
-        font-size: $font-size-xl*0.75;
-    }
-}
-
 .is-filled{
     color: $secondary;
 }

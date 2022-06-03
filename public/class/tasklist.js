@@ -1,43 +1,44 @@
 import {tp, Task} from './task.js';
 
-
 export default class TaskList{
+    
     constructor(){
-      this.list = [];
-      this.counter = 0;
-      this.idCounter = 0;
+      this.list = []; // list of tasks.
+      this.counter = 0; // count number tasks.
+      this.idCounter = 0; // id generator for tasks.
     }
-  
+    
+    // Check if object is Array.
     static isArray(task){
         return task instanceof Array;
     }
 
+    // Check if object is Task.
     static isTask(task){
         return task instanceof Task;
     }
 
-    
-
+    // Create new instance of task.
     newTask(task){
         
         if (task === null || !TaskList.isArray(task)){
             return 0;
         }
 
-        return new Task(null, task[tp.name], 
-            Number(task[tp.col]), task[tp.due], task[tp.priority], task[tp.time], task[tp.isDone]);
+        return new Task(null, task[tp.NAME], 
+            Number(task[tp.COL]), task[tp.DUE], task[tp.PRIORITY], task[tp.TIME], task[tp.ISDONE]);
         
 
     }
     
+    // Add new task instance to list.
     addTask(task){
-    //   let nt = this.newTask(task);
+
         if (!TaskList.isTask(task)){
             return 0;
         }
 
-        task.setId(this.idCounter);
-
+        task.setId(this.idCounter); // add its id from id generator.
         this.list.push(task);
         this.counter++;
         this.idCounter++;
@@ -46,32 +47,27 @@ export default class TaskList{
       
     }
 
+    // Remove a task from list.
     removeTask(taskId){
-        // if (!TaskList.isTask(task)){
-        //     return 0;
-        // }
-        // console.log("EYD");
-
         this.list = this.list.filter( (task) => task.id !== taskId);
         this.counter--;
         return 1;
 
     }
 
+    // Find a task from list by id.
     findTask(id){
-        //console.log("FIND TASK: ", id);
-        // id = id.slice(1, id.length+1); // truncate t in id.
         id = Number(id);
-        //console.log(id);
         return this.list.find( task => task.getId() === id);
     }
 
+    // Find a task from list by its column placement in kanban board.
     findTaskByColumn(colId){
         colId = Number(colId);
-        //console.log(id);
         return this.list.filter( task => task.getColumn() === colId);
     }
-  
+    
+    // Return all tasks in list.
     getAllTasks(){
         if (this.list.length === 0){
             return null;
@@ -79,4 +75,5 @@ export default class TaskList{
 
         return this.list;
     }
-  }
+
+}
