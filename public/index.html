@@ -9,23 +9,22 @@
     <link rel="stylesheet" href="./scss/index.scss">
     <title>StudBud</title>
 </head>
+
 <body>
 
     <section class="screen">
+ <!-- Top mobile navigation menu -->
         <nav class="top-nav-mobile">
             <div class="nav-wrapper justify-space-between align-center">
                 <span class="material-symbols-outlined hamburger-menu">menu</span>
                 <div class="mobile-dropdown-select">
                     <p>✔️ Task List</p>
-                    <!-- <span class="material-symbols-outlined expand-icon">expand_more</span> -->
                 </div>
-                <!-- <div class="mobile-dropdown-list">
-                    <p>🗂️ Kanban Board</p>
-                </div> -->
                 <h1 class="music-icon-mobile">🎵</h1>
             </div>
         </nav>
 
+ <!-- Left mobile navigation menu -->
         <nav class="left-nav-mobile is-hide">
             <div class="nav-menu-wrapper">
                 <span class="material-symbols-outlined hamburger-menu">menu</span>
@@ -60,10 +59,8 @@
             </ul>
         </nav>
 
-
-<!-- TASK - KANBAN -->
+<!-- Task List and Kanban Board screen-->
         <section class="navcontent" id="task-kanban-tab">
-
             <div class="tab">
                 <input type="radio" class="tab-radio" name="todo" id="tasklist" checked="true">
                 <label for="tasklist" class="tab-label">✔️ Task List</label>
@@ -71,7 +68,7 @@
                 <label for="kanban" class="tab-label">🗂️ Kanban Board</label>
             </div>
 
-<!-- ____TASK LIST_____ -->
+<!-- Task List screen -->
             <div class="tab-content align-center" id="tl-content">
                 <div class="tasks col-10-desktop col-10-mobile tasklists" id="upcoming-tasks">
                     <div class="title-len justify-start align-center">
@@ -81,18 +78,6 @@
                     <div class="btn-add" id="add-task-btn">
                         <p><span class="material-symbols-outlined btn-icon">add</span>Add task</p>
                     </div>
-
-                    <!-- <div class="unchecked-card">
-                        <label for="task-1" class="checkbox-container justify-center align-center">
-                            <input type="checkbox" id="task-1"/>
-                            <span class="checkmark justify-center align-center"><span class="check"></span></span>
-                        </label>
-                        <div class="card-content">
-                            <p class="card-title">ICPU 1500 word Self-Reflection</p>
-                            <p class="card-detail"><span class="col-tag"></span>by Tues, 11 Apr 2022</p>
-                        </div>
-                    </div> -->
-
                 </div>
                 <div class="tasks col-10-desktop col-10-mobile tasklists" id="completed-tasks">
                     <div class="task-title-wrapper justify-space-between align-end">
@@ -106,27 +91,16 @@
                     </div>
                 </div>
             </div>
-<!-- ____KANBAN BOARD_____ -->
+
+<!-- Kanban Board screen-->
             <div class="tab-content is-hide" id="kb-content">
-
                 <div class="columns">
-
                     <div class="column" id="c-0">
                         <div class="no-drag col-top justify-space-between align-center">
                             <p>Upcoming Tasks</p>
                             <span class="material-symbols-outlined icon edit">edit</span>
                         </div>
-                        
-                        <!-- <div class="kb-card">
-                            <p class="kb-card-title">ICPU 1500 word Self-Reflection</p>
-                            <p class="mid-card-detail align-center"><span class="priority high">High</span><span class="seperator"></span>3h</p>
-                            <p class="card-detail"><span class="col-tag nocol"></span>by Tues, 11 Apr 2022</p>
-                        </div> -->
-                        <!-- <div class="kb-btn-add">
-                            <p><span class="material-symbols-outlined btn-icon">add</span>Add Task</p>
-                        </div> -->
                     </div>
-
                     <div class="column" id="c-1">
                         <div class="no-drag col-top justify-space-between align-center">
                             <p>In Progress</p>
@@ -136,7 +110,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="column" id="c-2">
                         <div class="no-drag col-top justify-space-between align-center">
                             <p>Completed Tasks</p>
@@ -146,7 +119,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="column kb-btn-add no-drag">
                         <p><span class=" material-symbols-outlined btn-icon">add</span>Add Section</p>
                     </div>
@@ -154,645 +126,512 @@
             </div>
         </section>
 
-    <!-- ____NEW TASK MODAL_____ -->
-    <section class="modal-screen" id ="new-task-modal">
+    <!-- Task List new task modal -->
+        <section class="modal-screen" id ="new-task-modal">
+            <div class="modal justify-space-between align-end">
+                <span class="material-symbols-outlined btn-close">close</span>
+                <div class="modal-content" id = "edit-mode-0">
+                    <p class="modal-title">Create New Task</p>
+                    <form action = "#" >
+                        <input class="form-wrapper"type="text" placeholder="Untitled" name="taskname" required>
+                        
+                        <div class="form-wrapper form-col">
+                            <p class="form-text">Colour</p>
+                                <label for="purple-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="coltag" id="purple-tag" value = "1"/>
+                                    <span class="coltag justify-center align-center purple" ><span class="check"></span></span>
+                                </label>
 
-        <div class="modal justify-space-between align-end">
-            <span class="material-symbols-outlined btn-close">close</span>
-            <!-- <div class="modal-title justify-space-between align-center">
-                <p>Create New Task</p>
-            </div> -->
+                                <label for="blue-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="coltag" id="blue-tag" value = "2"/>
+                                    <span class="coltag justify-center align-center blue"><span class="check"></span></span>
+                                </label>
 
-            <div class="modal-content" id = "edit-mode-0">
-                <p class="modal-title">Create New Task</p>
+                                <label for="green-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="coltag" id="green-tag"value = "3"/>
+                                    <span class="coltag justify-center align-center green"><span class="check"></span></span>
+                                </label>
 
-                <form action = "#" >
-                    <input class="form-wrapper"type="text" placeholder="Untitled" name="taskname" required>
-                    
-                    <div class="form-wrapper form-col">
-                        <p class="form-text">Colour</p>
-                            <label for="purple-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="purple-tag" value = "1"/>
-                                <span class="coltag justify-center align-center purple" ><span class="check"></span></span>
-                            </label>
+                                <label for="yellow-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="coltag" id="yellow-tag"value = "4"/>
+                                    <span class="coltag justify-center align-center yellow"><span class="check"></span></span>
+                                </label>
 
-                            <label for="blue-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="blue-tag" value = "2"/>
-                                <span class="coltag justify-center align-center blue"><span class="check"></span></span>
-                            </label>
+                                <label for="orange-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="coltag" id="orange-tag"value = "5"/>
+                                    <span class="coltag justify-center align-center orange"><span class="check"></span></span>
+                                </label>
 
-                            <label for="green-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="green-tag"value = "3"/>
-                                <span class="coltag justify-center align-center green"><span class="check"></span></span>
-                            </label>
-
-                            <label for="yellow-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="yellow-tag"value = "4"/>
-                                <span class="coltag justify-center align-center yellow"><span class="check"></span></span>
-                            </label>
-
-                            <label for="orange-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="orange-tag"value = "5"/>
-                                <span class="coltag justify-center align-center orange"><span class="check"></span></span>
-                            </label>
-
-                            <label for="red-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="coltag" id="red-tag"value = "6"/>
-                                <span class="coltag justify-center align-center red"><span class="check"></span></span>
-                            </label>
-                    </div>
-
-                    <div class="form-wrapper">
-                        <p class="form-text-vertical">Due date</p>
-                        <input type="date" name ="due">
-                    </div>
-                    <div class="form-wrapper">
-                        <p class="form-text-vertical">Priority</p>
-                        <div class="select-wrapper">
-                            <select name ="priority">
-                                <option value="1">High</option>
-                                <option value="2">Medium</option>
-                                <option value="3">Low</option>
-                            </select>
-                            <span class="material-symbols-outlined arrow">expand_more</span>
+                                <label for="red-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="coltag" id="red-tag"value = "6"/>
+                                    <span class="coltag justify-center align-center red"><span class="check"></span></span>
+                                </label>
                         </div>
-                    </div>
 
-                    <div class="form-wrapper">
-                        <p class="form-info-text">Estimated Completion Time</p>
-                        <div class="stepper-wrapper">
-                            <div class="time-wrapper">
-                                <p class="form-text-vertical">Hour</p>
-                                <div class="input-wrapper">
-                                    <input type="number" name="esthour"  min="0" step="1" value="0">
-                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
-                                </div>
-                            </div>
-                            <div class="time-wrapper">
-                                <p class="form-text-vertical">Minutes</p>
-                                <div class="input-wrapper">
-                                    <input type="number" name="estmin"  min="0" max="60" step="1" value="0">
-                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-wrapper form-tgl align-center">
-                        <span class="material-symbols-outlined tgl-icon">done</span>
-                        <p class="form-text-tgl">Mark as done</p>
-
-                        <label for="task-done" class="tgl-container">
-                            <input type="checkbox" name="tgldone" id="task-done"/>
-                            <span class="tgl align-center"><span class="tgl-circle"></span></span>
-                        </label>
-                    </div>
-                </form>
-
-
-            </div>
-
-            <div class="modal-footer">
-                <div class="btn-modal cancel">
-                    <p>Cancel</p>
-                </div>
-                <div class="btn-modal action">
-                    <p>Create task</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- ____NEW COL MODAL_____ -->
-    <section class="modal-screen is-hide" id ="new-column-modal">
-
-        <div class="modal justify-space-between align-end">
-            <span class="material-symbols-outlined btn-close">close</span>
-
-            <div class="modal-content">
-                <p class="modal-title">Create New Section</p>
-
-                <form action = "#" >
-                    <input class="form-wrapper"type="text" placeholder="Untitled" name="colname" required>
-                    
-                    <div class="form-wrapper form-tgl align-center">
-                        <span class="material-symbols-outlined tgl-icon">done</span>
-                        <p class="form-text-tgl">Mark all tasks in this section as completed</p>
-
-                        <label for="all-done" class="tgl-container">
-                            <input type="checkbox" name="tglalldone" id="all-done"/>
-                            <span class="tgl align-center"><span class="tgl-circle"></span></span>
-                        </label>
-                    </div>
-                </form>
-
-
-            </div>
-
-            <div class="modal-footer">
-                <div class="btn-modal cancel">
-                    <p>Cancel</p>
-                </div>
-                <div class="btn-modal action">
-                    <p>Create section</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- ____NEW COLLECTION MODAL_____ -->
-    <section class="modal-screen is-hide" id ="new-collection-modal">
-
-        <div class="modal justify-space-between align-end">
-            <span class="material-symbols-outlined btn-close">close</span>
-
-            <div class="modal-content">
-                <p class="modal-title">Create New Collection</p>
-
-                <form action = "#" >
-                    <input class="form-wrapper"type="text" placeholder="Untitled" name="cltname" required>
-                    
-                    <div class="form-wrapper form-col">
-                        <p class="form-text">Colour</p>
-                            <label for="rpurple-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="rcoltag" id="rpurple-tag" value = "1"/>
-                                <span class="coltag justify-center align-center purple" ><span class="check"></span></span>
-                            </label>
-
-                            <label for="rblue-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="rcoltag" id="rblue-tag" value = "2"/>
-                                <span class="coltag justify-center align-center blue"><span class="check"></span></span>
-                            </label>
-
-                            <label for="rgreen-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="rcoltag" id="rgreen-tag"value = "3"/>
-                                <span class="coltag justify-center align-center green"><span class="check"></span></span>
-                            </label>
-
-                            <label for="ryellow-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="rcoltag" id="ryellow-tag"value = "4"/>
-                                <span class="coltag justify-center align-center yellow"><span class="check"></span></span>
-                            </label>
-
-                            <label for="rorange-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="rcoltag" id="rorange-tag"value = "5"/>
-                                <span class="coltag justify-center align-center orange"><span class="check"></span></span>
-                            </label>
-
-                            <label for="rred-tag" class="coltag-container justify-center align-center">
-                                <input type="radio" name="rcoltag" id="rred-tag"value = "6"/>
-                                <span class="coltag justify-center align-center red"><span class="check"></span></span>
-                            </label>
-                    </div>
-                </form>
-
-
-            </div>
-
-            <div class="modal-footer">
-                <div class="btn-modal cancel">
-                    <p>Cancel</p>
-                </div>
-                <div class="btn-modal action">
-                    <p>Create collection</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!-- ____NEW READING MODAL_____ -->
-    <section class="modal-screen is-hide" id ="new-reading-modal">
-
-        <div class="modal justify-space-between align-end">
-            <span class="material-symbols-outlined btn-close">close</span>
-
-            <div class="modal-content">
-                <p class="modal-title">Create New Reading</p>
-
-                <form action = "#" >
-                    <input class="form-wrapper"type="text" placeholder="Untitled" name="rdgname" required>
-                    
-                    <div class="form-wrapper-s form-tgl align-center">
-                        <span class="material-symbols-outlined tgl-icon">done_all</span>
-                        <p class="form-text-tgl">Mark as read</p>
-
-                        <label for="is-read" class="tgl-container">
-                            <input type="checkbox" name="tglread" id="is-read"/>
-                            <span class="tgl align-center"><span class="tgl-circle"></span></span>
-                        </label>
-                    </div>
-                    <!-- <div class="form-wrapper form-tgl align-center">
-                        <span class="material-symbols-outlined tgl-icon">bookmark</span>
-                        <p class="form-text-tgl">Bookmark reading</p>
-
-                        <label for="is-bookm" class="tgl-container">
-                            <input type="checkbox" name="tglbookm" id="is-bookm"/>
-                            <span class="tgl align-center"><span class="tgl-circle"></span></span>
-                        </label>
-                    </div> -->
-                    <div class="form-wrapper">
-                        <p class="form-text-vertical">Link</p>
-                        <input type="text" name ="link" placeholder="https://...">
-                    </div>
-                    <div class="form-wrapper">
-                        <p class="form-text-vertical">Add to collection</p>
-                        <div class="select-wrapper">
-                            <select name ="collection">
-                                <option value="0">None</option>
-                            </select>
-                            <span class="material-symbols-outlined arrow">expand_more</span>
-                        </div>
-                    </div>
-                </form>
-
-
-            </div>
-
-            <div class="modal-footer">
-                <div class="btn-modal cancel">
-                    <p>Cancel</p>
-                </div>
-                <div class="btn-modal action">
-                    <p>Create reading</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-<!-- MODAL READING DETAIL -->
-<section class="modal-screen is-hide" id="edit-reading-modal">
-    <div class="modal justify-start align-start">
-        <span class="material-symbols-outlined btn-close">close</span>
-
-        <div class="modal-content">
-            <div class="modal-action-btn-wrapper">
-                <div class="modal-action-btn justify-center align-center" id="edit-rdg-r">
-                    <span class="material-symbols-outlined icon">edit</span>
-                    <p class="modal-btn-text">Edit reading</p>
-                </div>
-                <div class="modal-action-btn justify-center align-center" id="delete-rdg-r">
-                    <span class="material-symbols-outlined icon">delete</span>
-                    <p class="modal-btn-text">Delete reading</p>
-                </div>
-            </div>
-            <h1 class="reading-title">Introduction to interdisplinary research: theory and practice</h1>
-            <div class="details-wrapper justify-start">
-                <div class="lhs">
-                    <div class="lhs-item">
-                        <span class="material-symbols-outlined detail-icon">library_books</span>
-                        <p class="property-text">Collection</p>
-                    </div>
-                    <div class="lhs-item">
-                        <span class="material-symbols-outlined detail-icon">link</span>
-                        <p class="property-text">Link</p>
-                    </div>
-                    <div class="lhs-item">
-                        <span class="material-symbols-outlined detail-icon">show_chart</span>
-                        <p class="property-text">Status</p>
-                    </div>
-                </div>
-                <div class="rhs">
-                    <div class="card-detail task-detail">
-                        <span class="col-tag nocol"></span>
-                        <p>ARCH4109</p>
-                    </div>
-
-                    <div class="task-detail">
-                        <a class="reading-link" href="https://www.notion.so/" target="_blank">https://www.notion.so/</a>
-                    </div>
-
-                    <div class="task-detail align-center">
-                        <div class="rhs-item" id="isread-dt">
-                            <span class="material-symbols-outlined detail-icon">done_all</span>
-                            <p>Read</p>
-                        </div>
-                        <!-- <span><span class="material-symbols-outlined detail-icon">done_all</span>Read</span> -->
-                        <!-- <span class="seperator"></span> -->
-                        <!-- <span><span class="material-symbols-outlined detail-icon">bookmark</span>Bookmarked</span> -->
-                        <!-- <div class="rhs-item" id="ispin-dt">
-                            <span class="material-symbols-outlined detail-icon">bookmark</span>
-                            <p>Bookmarked</p>
-                        </div> -->
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-    </section>
-
-<!-- MODAL EDIT Task-->
-<section class="modal-screen" id="detail-task-modal">
-    <div class="modal justify-start align-start">
-        <span class="material-symbols-outlined btn-close">close</span>
-
-        <div class="modal-content">
-            <div class="modal-action-btn-wrapper">
-                <div class="modal-action-btn justify-center align-center" id ="edit-task-t">
-                    <span class="material-symbols-outlined icon">edit</span>
-                    <p class="modal-btn-text">Edit task</p>
-                </div>
-                <div class="modal-action-btn justify-center align-center" id="delete-task-t">
-                    <span class="material-symbols-outlined icon">delete</span>
-                    <p class="modal-btn-text">Delete task</p>
-                </div>
-            </div>
-            <h1 class="reading-title">Introduction to interdisplinary research: theory and practice</h1>
-            <div class="details-wrapper justify-start">
-                <div class="lhs">
-                    <div class="lhs-item">
-                        <span class="material-symbols-outlined detail-icon">sell</span>
-                        <p class="property-text">Colour Tag</p>
-                    </div>
-                    <div class="lhs-item">
-                        <span class="material-symbols-outlined detail-icon">signal_cellular_alt</span>
-                        <p class="property-text">Priority</p>
-                    </div>
-                    <div class="lhs-item">
-                        <span class="material-symbols-outlined detail-icon">calendar_today</span>
-                        <p class="property-text">Due Date</p>
-                    </div>
-                    <div class="lhs-item">
-                        <span class="material-symbols-outlined detail-icon">schedule</span>
-                        <p class="property-text">Completion Time</p>
-                    </div>
-                    <div class="lhs-item">
-                        <span class="material-symbols-outlined detail-icon">show_chart</span>
-                        <p class="property-text">Status</p>
-                    </div>
-                </div>
-                <div class="rhs">
-                    <div class="card-detail task-detail" id="td-col">
-                        <span class="col-tag nocol"></span>
-                        <p>-</p>
-                    </div>
-                    <div class="task-detail align-center" id = "td-prio">
-                        <span class="priority high">High</span>
-                    </div>
-                    <div class="task-detail align-center" id = "td-due">
-                        <p>Tuesday, 22 March 2022</p>
-                    </div>
-                    <div class="task-detail align-center" id ="td-time">
-                        <p>1h</p>
-                    </div>
-                    <div class="task-detail align-center" id = "td-isdone">
-                        <span class="material-symbols-outlined detail-icon">done</span>
-                        <p>Done</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    </section>
-<!-- POMODORO - STOPWATCH -->
-    <section class="navcontent is-hide" id="pomodoro-stopwatch-tab">
-        <div class="tab">
-            <input type="radio" class="tab-radio" name="timer" id="pomodoro" checked="true">
-            <label for="pomodoro" class="tab-label">⏰ Pomodoro Timer</label>
-            <input type="radio" class="tab-radio" name="timer" id="stopwatch">
-            <label for="stopwatch" class="tab-label">⏱️ Classic Stopwatch</label>
-        </div>
-<!-- POMODORO -->
-        <div class="tab-content align-center" id="pmdr-content">
-            <div class="settings button justify-center">
-                <p><span class="material-symbols-outlined btn-icon">settings</span>Settings</p>
-            </div>
-
-            <div class="pmdr-tab">
-                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="focus" value="1" checked="true">
-                <label for="focus" class="pmdr-tab-label" id="focus-label">Focus</label>
-                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="shortbr" value="2">
-                <label for="shortbr" class="pmdr-tab-label"id="shortbr-label">Short Break</label>
-                <input type="radio" class="pmdr-tab-radio" name="pmdr" id="longbr" value="3">
-                <label for="longbr" class="pmdr-tab-label"id="longbr-label">Long Break</label>
-            </div>
-            <div class="counter-container ">
-                <div class="progress-circle">
-                    <div class="progress-circle-inner">
-                        <div class="text-container">
-                            <p class ="circle-text" id="round-text">Round 1 of 4</p>
-                            <h1 class="circle-text" id="elapsed-time">25:00</h1>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            
-            <!-- <div class="timer-button"><p>Start</p></div> -->
-
-            <div class="timer-btn-container justify-center">
-                <div class="timer-button is-hide" id="pmdr-reset"><p>Reset</p></div>
-                <div class="timer-button" id="pmdr-start"><p>Start</p></div>
-            </div>
-
-        </div>
-    <!-- STOPWATCH -->
-    <div class="tab-content align-center is-hide" id="swatch-content">
-        <div class="stopwatch-container">
-            <h1 class="stopwatch" id="s-elapsed-time">00:00:00.0</h1>
-            <div class="timer-btn-container justify-center">
-                <div class="timer-button is-hide" id="st-reset"><p>Reset</p></div>
-                <div class="timer-button" id="st-start"><p>Start</p></div>
-            </div>
-        </div>
-    </div>
-    </section>
-    <!-- ____PMDR SETTINGS MODAL_____ -->
-    <section class="modal-screen is-hide" id ="settings-modal">
-
-        <div class="modal justify-space-between align-end">
-            <span class="material-symbols-outlined btn-close">close</span>
-
-            <div class="modal-content">
-                <p class="modal-title">Pomodoro Settings</p>
-
-                <form action = "#" >
-                    <div class="form-wrapper">
-                        <p class="form-info-text">Time (Minutes)</p>
-                        <div class="stepper-wrapper">
-                            <div class="time-wrapper">
-                                <p class="form-text-vertical">Focus</p>
-                                <div class="input-wrapper">
-                                    <input type="number" name="focusnum"  min="1" step="1" value="1" id="focus-time">
-                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
-                                </div>
-                            </div>
-                            <div class="time-wrapper">
-                                <p class="form-text-vertical">Short Break</p>
-                                <div class="input-wrapper">
-                                    <input type="number" name="shortbrnum"  min="1" max="60" step="1" value="1" id="shortbr-time">
-                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
-                                </div>
-                            </div>
-                            <div class="time-wrapper">
-                                <p class="form-text-vertical">Long Break</p>
-                                <div class="input-wrapper">
-                                    <input type="number" name="longbrnum"  min="1" max="60" step="1" value="1" id="longbr-time">
-                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stepper-wrapper">
                         <div class="form-wrapper">
-                            <div class="time-wrapper">
-                                <p class="form-text-vertical">Rounds</p>
-                                <div class="input-wrapper">
-                                    <input type="number" name="roundnum"  min="1" step="1" value="1" id="round-num">
-                                    <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                            <p class="form-text-vertical">Due date</p>
+                            <input type="date" name ="due">
+                        </div>
+                        <div class="form-wrapper">
+                            <p class="form-text-vertical">Priority</p>
+                            <div class="select-wrapper">
+                                <select name ="priority">
+                                    <option value="1">High</option>
+                                    <option value="2">Medium</option>
+                                    <option value="3">Low</option>
+                                </select>
+                                <span class="material-symbols-outlined arrow">expand_more</span>
+                            </div>
+                        </div>
+
+                        <div class="form-wrapper">
+                            <p class="form-info-text">Estimated Completion Time</p>
+                            <div class="stepper-wrapper">
+                                <div class="time-wrapper">
+                                    <p class="form-text-vertical">Hour</p>
+                                    <div class="input-wrapper">
+                                        <input type="number" name="esthour"  min="0" step="1" value="0">
+                                        <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                    </div>
+                                </div>
+                                <div class="time-wrapper">
+                                    <p class="form-text-vertical">Minutes</p>
+                                    <div class="input-wrapper">
+                                        <input type="number" name="estmin"  min="0" max="60" step="1" value="0">
+                                        <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-wrapper form-tgl align-center">
+                            <span class="material-symbols-outlined tgl-icon">done</span>
+                            <p class="form-text-tgl">Mark as done</p>
+
+                            <label for="task-done" class="tgl-container">
+                                <input type="checkbox" name="tgldone" id="task-done"/>
+                                <span class="tgl align-center"><span class="tgl-circle"></span></span>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-modal cancel">
+                        <p>Cancel</p>
                     </div>
-
-
-                </form>
-
-
-            </div>
-
-            <div class="modal-footer">
-                <div class="btn-modal cancel">
-                    <p>Cancel</p>
-                </div>
-                <div class="btn-modal action">
-                    <p>Save changes</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-<!-- READING - COLLECTION -->
-<section class="navcontent is-hide" id="readingls-collections-tab">
-    <div class="tab">
-        <input type="radio" class="tab-radio" name="readings" id="readingls" checked="true">
-        <label for="readingls" class="tab-label">📖 Readings</label>
-        <input type="radio" class="tab-radio" name="readings" id="collections">
-        <label for="collections" class="tab-label">📚 Collections</label>
-    </div>
-
-    <div class="tab-content align-center" id="rd-content">
-        <div class="tasks col-10-desktop col-10-mobile readings" id="unread-readings">
-            <div class="title-len justify-start align-center">
-                <p class="task-title">Unread</p>
-                <div class="list-len"><p>0</p></div>
-            </div>
-            <div class="btn-add" id="add-reading-btn">
-                <p><span class="material-symbols-outlined btn-icon">add</span>Add reading</p>
-            </div>
-
-            <!-- <div class="unchecked-card">
-                <label for="task-1" class="checkbox-container justify-center align-center">
-                    <input type="checkbox" id="task-1"/>
-                    <span class="checkmark justify-center align-center"><span class="check"></span></span>
-                </label>
-                <div class="card-content">
-                    <p class="card-title">ICPU 1500 word Self-Reflection</p>
-                    <div class="detail-wrapper align-center">
-                        <p class="card-detail"><span class="col-tag purple"></span>ARCH4109</p>
-                        <span class="seperator is-hide"></span>
-                        <p class="card-detail is-hide"><span class="material-symbols-outlined detail-icon">done_all</span>Read</p>
+                    <div class="btn-modal action">
+                        <p>Create task</p>
                     </div>
                 </div>
-                <div class="bookmark-icon">
-                    <span class="material-symbols-outlined">bookmark</span>
+            </div>
+        </section>
+
+    <!-- Task Details Modal-->
+        <section class="modal-screen" id="detail-task-modal">
+            <div class="modal justify-start align-start">
+                <span class="material-symbols-outlined btn-close">close</span>
+                <div class="modal-content">
+                    <div class="modal-action-btn-wrapper">
+                        <div class="modal-action-btn justify-center align-center" id ="edit-task-t">
+                            <span class="material-symbols-outlined icon">edit</span>
+                            <p class="modal-btn-text">Edit task</p>
+                        </div>
+                        <div class="modal-action-btn justify-center align-center" id="delete-task-t">
+                            <span class="material-symbols-outlined icon">delete</span>
+                            <p class="modal-btn-text">Delete task</p>
+                        </div>
+                    </div>
+                    <h1 class="reading-title">Introduction to interdisplinary research: theory and practice</h1>
+                    <div class="details-wrapper justify-start">
+                        <div class="lhs">
+                            <div class="lhs-item">
+                                <span class="material-symbols-outlined detail-icon">sell</span>
+                                <p class="property-text">Colour Tag</p>
+                            </div>
+                            <div class="lhs-item">
+                                <span class="material-symbols-outlined detail-icon">signal_cellular_alt</span>
+                                <p class="property-text">Priority</p>
+                            </div>
+                            <div class="lhs-item">
+                                <span class="material-symbols-outlined detail-icon">calendar_today</span>
+                                <p class="property-text">Due Date</p>
+                            </div>
+                            <div class="lhs-item">
+                                <span class="material-symbols-outlined detail-icon">schedule</span>
+                                <p class="property-text">Completion Time</p>
+                            </div>
+                            <div class="lhs-item">
+                                <span class="material-symbols-outlined detail-icon">show_chart</span>
+                                <p class="property-text">Status</p>
+                            </div>
+                        </div>
+                        <div class="rhs">
+                            <div class="card-detail task-detail" id="td-col">
+                                <span class="col-tag nocol"></span>
+                                <p>-</p>
+                            </div>
+                            <div class="task-detail align-center" id = "td-prio">
+                                <span class="priority high">High</span>
+                            </div>
+                            <div class="task-detail align-center" id = "td-due">
+                                <p>Tuesday, 22 March 2022</p>
+                            </div>
+                            <div class="task-detail align-center" id ="td-time">
+                                <p>1h</p>
+                            </div>
+                            <div class="task-detail align-center" id = "td-isdone">
+                                <span class="material-symbols-outlined detail-icon">done</span>
+                                <p>Done</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+            </div>
+        </section>
 
-            </div> -->
+    <!-- Kanban Board new column modal -->
+        <section class="modal-screen is-hide" id ="new-column-modal">
+            <div class="modal justify-space-between align-end">
+                <span class="material-symbols-outlined btn-close">close</span>
+                <div class="modal-content">
 
+                    <p class="modal-title">Create New Section</p>
+
+                    <form action = "#" >
+                        <input class="form-wrapper"type="text" placeholder="Untitled" name="colname" required>
+                        
+                        <div class="form-wrapper form-tgl align-center">
+                            <span class="material-symbols-outlined tgl-icon">done</span>
+                            <p class="form-text-tgl">Mark all tasks in this section as completed</p>
+
+                            <label for="all-done" class="tgl-container">
+                                <input type="checkbox" name="tglalldone" id="all-done"/>
+                                <span class="tgl align-center"><span class="tgl-circle"></span></span>
+                            </label>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-modal cancel">
+                        <p>Cancel</p>
+                    </div>
+                    <div class="btn-modal action">
+                        <p>Create section</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Pomodoro and stopwatch screen -->
+        <section class="navcontent is-hide" id="pomodoro-stopwatch-tab">
+            <div class="tab">
+                <input type="radio" class="tab-radio" name="timer" id="pomodoro" checked="true">
+                <label for="pomodoro" class="tab-label">⏰ Pomodoro Timer</label>
+                <input type="radio" class="tab-radio" name="timer" id="stopwatch">
+                <label for="stopwatch" class="tab-label">⏱️ Classic Stopwatch</label>
+            </div>
+
+    <!-- Pomodoro screen -->
+            <div class="tab-content align-center" id="pmdr-content">
+                <div class="settings button justify-center">
+                    <p><span class="material-symbols-outlined btn-icon">settings</span>Settings</p>
+                </div>
+                <div class="pmdr-tab">
+                    <input type="radio" class="pmdr-tab-radio" name="pmdr" id="focus" value="1" checked="true">
+                    <label for="focus" class="pmdr-tab-label" id="focus-label">Focus</label>
+                    <input type="radio" class="pmdr-tab-radio" name="pmdr" id="shortbr" value="2">
+                    <label for="shortbr" class="pmdr-tab-label"id="shortbr-label">Short Break</label>
+                    <input type="radio" class="pmdr-tab-radio" name="pmdr" id="longbr" value="3">
+                    <label for="longbr" class="pmdr-tab-label"id="longbr-label">Long Break</label>
+                </div>
+                <div class="counter-container ">
+                    <div class="progress-circle">
+                        <div class="progress-circle-inner">
+                            <div class="text-container">
+                                <p class ="circle-text" id="round-text">Round 1 of 4</p>
+                                <h1 class="circle-text" id="elapsed-time">25:00</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timer-btn-container justify-center">
+                    <div class="timer-button is-hide" id="pmdr-reset"><p>Reset</p></div>
+                    <div class="timer-button" id="pmdr-start"><p>Start</p></div>
+                </div>
+            </div>
+
+        <!-- Stopwatch section -->
+            <div class="tab-content align-center is-hide" id="swatch-content">
+                <div class="stopwatch-container">
+                    <h1 class="stopwatch" id="s-elapsed-time">00:00:00.0</h1>
+                    <div class="timer-btn-container justify-center">
+                        <div class="timer-button is-hide" id="st-reset"><p>Reset</p></div>
+                        <div class="timer-button" id="st-start"><p>Start</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pomdoro settings modal -->
+        <section class="modal-screen is-hide" id ="settings-modal">
+            <div class="modal justify-space-between align-end">
+                <span class="material-symbols-outlined btn-close">close</span>
+                <div class="modal-content">
+                    <p class="modal-title">Pomodoro Settings</p>
+                    <form action = "#" >
+
+                        <div class="form-wrapper">
+                            <p class="form-info-text">Time (Minutes)</p>
+                            <div class="stepper-wrapper">
+                                <div class="time-wrapper">
+                                    <p class="form-text-vertical">Focus</p>
+                                    <div class="input-wrapper">
+                                        <input type="number" name="focusnum"  min="1" step="1" value="1" id="focus-time">
+                                        <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                    </div>
+                                </div>
+                                <div class="time-wrapper">
+                                    <p class="form-text-vertical">Short Break</p>
+                                    <div class="input-wrapper">
+                                        <input type="number" name="shortbrnum"  min="1" max="60" step="1" value="1" id="shortbr-time">
+                                        <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                    </div>
+                                </div>
+                                <div class="time-wrapper">
+                                    <p class="form-text-vertical">Long Break</p>
+                                    <div class="input-wrapper">
+                                        <input type="number" name="longbrnum"  min="1" max="60" step="1" value="1" id="longbr-time">
+                                        <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="stepper-wrapper">
+                            <div class="form-wrapper">
+                                <div class="time-wrapper">
+                                    <p class="form-text-vertical">Rounds</p>
+                                    <div class="input-wrapper">
+                                        <input type="number" name="roundnum"  min="1" step="1" value="1" id="round-num">
+                                        <span class="material-symbols-outlined two-arrows">unfold_more</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-modal cancel">
+                        <p>Cancel</p>
+                    </div>
+                    <div class="btn-modal action">
+                        <p>Save changes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Reading and Collection screen -->
+    <section class="navcontent is-hide" id="readingls-collections-tab">
+        <div class="tab">
+            <input type="radio" class="tab-radio" name="readings" id="readingls" checked="true">
+            <label for="readingls" class="tab-label">📖 Readings</label>
+            <input type="radio" class="tab-radio" name="readings" id="collections">
+            <label for="collections" class="tab-label">📚 Collections</label>
         </div>
-        <div class="tasks col-10-desktop col-10-mobile readings" id="read-readings">
-            <div class="task-title-wrapper justify-space-between align-end">
-                <div class="title-len justify-start align-center completed" >
-                    <p class="task-title">Marked as read</p>
+
+    <!-- Reading screen -->
+        <div class="tab-content align-center" id="rd-content">
+            <div class="tasks col-10-desktop col-10-mobile readings" id="unread-readings">
+                <div class="title-len justify-start align-center">
+                    <p class="task-title">Unread</p>
                     <div class="list-len"><p>0</p></div>
                 </div>
-                <div class="button justify-center align-center">
-                    <p><span class="material-symbols-outlined btn-icon">visibility_off</span>Hide</p>
+                <div class="btn-add" id="add-reading-btn">
+                    <p><span class="material-symbols-outlined btn-icon">add</span>Add reading</p>
+                </div>
+                
+            </div>
+            <div class="tasks col-10-desktop col-10-mobile readings" id="read-readings">
+                <div class="task-title-wrapper justify-space-between align-end">
+                    <div class="title-len justify-start align-center completed" >
+                        <p class="task-title">Marked as read</p>
+                        <div class="list-len"><p>0</p></div>
+                    </div>
+                    <div class="button justify-center align-center">
+                        <p><span class="material-symbols-outlined btn-icon">visibility_off</span>Hide</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="tab-content align-center is-hide" id="collections-content">
-        <div class="accordion col-10-desktop col-10-mobile">
-            <div class="btn-add">
-                <p><span class="material-symbols-outlined btn-icon">add</span>Add collection</p>
+    <!-- Collection screen -->
+        <div class="tab-content align-center is-hide" id="collections-content">
+            <div class="accordion col-10-desktop col-10-mobile">
+                <div class="btn-add">
+                    <p><span class="material-symbols-outlined btn-icon">add</span>Add collection</p>
+                </div>
             </div>
-<!-- 
-            <div class="accordion-item">
+        </div>
+    </section>
 
+    <!-- New collection modal -->
+        <section class="modal-screen is-hide" id ="new-collection-modal">
+            <div class="modal justify-space-between align-end">
+                <span class="material-symbols-outlined btn-close">close</span>
+                <div class="modal-content">
+                    <p class="modal-title">Create New Collection</p>
+                    <form action = "#" >
 
-                <div class="label-wrapper justify-space-between align-center">
-                    <div class="label justify-start align-center">
-                        <p>ARCH4109</p>
-                        <div class="label-icon-wrapper">
-                            <span class="material-symbols-outlined icon label-icon">edit</span>
-                            <span class="material-symbols-outlined icon label-icon">delete</span>
-                        </div>                    
+                        <input class="form-wrapper"type="text" placeholder="Untitled" name="cltname" required>
+                        <div class="form-wrapper form-col">
+                            <p class="form-text">Colour</p>
+                                <label for="rpurple-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="rcoltag" id="rpurple-tag" value = "1"/>
+                                    <span class="coltag justify-center align-center purple" ><span class="check"></span></span>
+                                </label>
+
+                                <label for="rblue-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="rcoltag" id="rblue-tag" value = "2"/>
+                                    <span class="coltag justify-center align-center blue"><span class="check"></span></span>
+                                </label>
+
+                                <label for="rgreen-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="rcoltag" id="rgreen-tag"value = "3"/>
+                                    <span class="coltag justify-center align-center green"><span class="check"></span></span>
+                                </label>
+
+                                <label for="ryellow-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="rcoltag" id="ryellow-tag"value = "4"/>
+                                    <span class="coltag justify-center align-center yellow"><span class="check"></span></span>
+                                </label>
+
+                                <label for="rorange-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="rcoltag" id="rorange-tag"value = "5"/>
+                                    <span class="coltag justify-center align-center orange"><span class="check"></span></span>
+                                </label>
+
+                                <label for="rred-tag" class="coltag-container justify-center align-center">
+                                    <input type="radio" name="rcoltag" id="rred-tag"value = "6"/>
+                                    <span class="coltag justify-center align-center red"><span class="check"></span></span>
+                                </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-modal cancel">
+                        <p>Cancel</p>
                     </div>
-                    <div class="open-all">
-                        <p class="justify-center align-center"><span class="material-symbols-outlined open-all-icon">open_in_new</span><span class ="open-all-text">Open all readings</span></p>
+                    <div class="btn-modal action">
+                        <p>Create collection</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
+    <!-- New Reading Modal -->
+        <section class="modal-screen is-hide" id ="new-reading-modal">
+            <div class="modal justify-space-between align-end">
+                <span class="material-symbols-outlined btn-close">close</span>
+                <div class="modal-content">
+                    <p class="modal-title">Create New Reading</p>
+                    <form action = "#" >
 
+                        <input class="form-wrapper"type="text" placeholder="Untitled" name="rdgname" required>
+                        
+                        <div class="form-wrapper-s form-tgl align-center">
+                            <span class="material-symbols-outlined tgl-icon">done_all</span>
+                            <p class="form-text-tgl">Mark as read</p>
 
-            </div> -->
+                            <label for="is-read" class="tgl-container">
+                                <input type="checkbox" name="tglread" id="is-read"/>
+                                <span class="tgl align-center"><span class="tgl-circle"></span></span>
+                            </label>
+                        </div>
 
-            <!-- <div class="accordion-item">
+                        <div class="form-wrapper">
+                            <p class="form-text-vertical">Link</p>
+                            <input type="text" name ="link" placeholder="https://...">
+                        </div>
 
+                        <div class="form-wrapper">
+                            <p class="form-text-vertical">Add to collection</p>
+                            <div class="select-wrapper">
+                                <select name ="collection">
+                                    <option value="0">None</option>
+                                </select>
+                                <span class="material-symbols-outlined arrow">expand_more</span>
+                            </div>
+                        </div>
 
-                <div class="label-wrapper justify-space-between align-center">
-                    <div class="label justify-start align-center">
-                        <span class="material-symbols-outlined expand-icon">expand_more</span>
-                        <p>ARCH4109</p>
-                        <div class="label-icon-wrapper">
-                            <span class="material-symbols-outlined icon label-icon">edit</span>
-                            <span class="material-symbols-outlined icon label-icon">delete</span>
-                        </div>                    
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-modal cancel">
+                        <p>Cancel</p>
                     </div>
-                    <div class="open-all">
-                        <p class="justify-center align-center"><span class="material-symbols-outlined open-all-icon">open_in_new</span><span class ="open-all-text">Open all readings</span></p>
+                    <div class="btn-modal action">
+                        <p>Create reading</p>
                     </div>
                 </div>
+            </div>
+        </section>
 
-
-                <div class="content show">
-                    <div class="reading-btn">
-                        <p>Introduction to interdisciplinary research: theory and practice</p>
+    <!-- Reading Details Modal -->
+        <section class="modal-screen is-hide" id="edit-reading-modal">
+            <div class="modal justify-start align-start">
+                <span class="material-symbols-outlined btn-close">close</span>
+                <div class="modal-content">
+                    <div class="modal-action-btn-wrapper">
+                        <div class="modal-action-btn justify-center align-center" id="edit-rdg-r">
+                            <span class="material-symbols-outlined icon">edit</span>
+                            <p class="modal-btn-text">Edit reading</p>
+                        </div>
+                        <div class="modal-action-btn justify-center align-center" id="delete-rdg-r">
+                            <span class="material-symbols-outlined icon">delete</span>
+                            <p class="modal-btn-text">Delete reading</p>
+                        </div>
                     </div>
-                    <div class="reading-btn">
-                        <p>Introduction to interdisciplinary research: theory and practice</p>
+                    <h1 class="reading-title">Introduction to interdisplinary research: theory and practice</h1>
+                    <div class="details-wrapper justify-start">
+                        <div class="lhs">
+                            <div class="lhs-item">
+                                <span class="material-symbols-outlined detail-icon">library_books</span>
+                                <p class="property-text">Collection</p>
+                            </div>
+                            <div class="lhs-item">
+                                <span class="material-symbols-outlined detail-icon">link</span>
+                                <p class="property-text">Link</p>
+                            </div>
+                            <div class="lhs-item">
+                                <span class="material-symbols-outlined detail-icon">show_chart</span>
+                                <p class="property-text">Status</p>
+                            </div>
+                        </div>
+                        <div class="rhs">
+                            <div class="card-detail task-detail">
+                                <span class="col-tag nocol"></span>
+                                <p>ARCH4109</p>
+                            </div>
+                            <div class="task-detail">
+                                <a class="reading-link" href="https://www.notion.so/" target="_blank">https://www.notion.so/</a>
+                            </div>
+                            <div class="task-detail align-center">
+                                <div class="rhs-item" id="isread-dt">
+                                    <span class="material-symbols-outlined detail-icon">done_all</span>
+                                    <p>Read</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="reading-btn">
-                        <p>Introduction to interdisciplinary research: theory and practice</p>
-                    </div>
-                    <a class="reading-btn" href="https://www.notion.so/" target="_blank">Introduction to interdisciplinary research: theory and practice </a>
                 </div>
-        </div> -->
-
-
-    </div>
-</section>
-
-<!-- <button onclick="open()">Geeksforgeeks</button>
-  
-<script>
-    function open() {
-        window.open("https://www.google.com", "_blank");
-    }
-</script> -->
-<!-- <script type = "module" src="index.js"></script> -->
+            </div>
+        </section>
+    </section>
 <script type = "module" src="./script.js"></script>
-<!-- <script type = "module" src="kanbanScreen.js"></script> -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.min.js'></script>
-<!-- <script src="../node_modules/easytimer/dist/easytimer.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/easytimer.js@4.5.3/dist/easytimer.min.js"></script>
-
-
-
 </body>
 </html>
